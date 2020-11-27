@@ -1,5 +1,4 @@
 const { check, validationResult } = require("express-validator");
-const { async } = require("q");
 const Project = require("../models/projectModel");
 
 
@@ -16,7 +15,7 @@ const isNameExist = async (projectName)=>{
 
 
 //@des Get all Projects
-exports.getProjects = async((req, res) => {
+exports.getProjects = async (req, res) => {
   try {
     Project.get((err,projects) => {
       return res.status(200).json({
@@ -30,7 +29,7 @@ exports.getProjects = async((req, res) => {
       error: error.message
     });
   }
-});
+};
 
 // @des Get one Project
 
