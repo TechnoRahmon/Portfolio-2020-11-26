@@ -63,7 +63,7 @@ exports.AddResumes  = async (req,res,next)=>{
 
 
 //@des GET Download resume file
-//@route POST api/v2/resume/:id/download
+//@route GET  api/v2/resume/:id/download
 //@accesss Public
 
 exports.downloadFile= async (req,res,next)=>{
@@ -89,16 +89,11 @@ exports.downloadFile= async (req,res,next)=>{
 
 
 
-
-
-
-
-
-//@des DELETE Delete resume file
-//@route POST api/v2/resume/:id/
+//@des GET single resume file
+//@route GET api/v2/resume/:id/download
 //@accesss Public
 
-exports.deleteResume = async (req,res,next)=>{
+exports.resumeDetails= async (req,res,next)=>{
     try{
         //get the resume id 
         const id = req.params.id
@@ -108,11 +103,51 @@ exports.deleteResume = async (req,res,next)=>{
 
         // check if resume is Not exist
         if (!resume) return res.status(404).json({ success:false , error : 'File Not found'})
-        
-        //delete file from Server storage
-        await fs.unlink(resume.path)
-        return res.status(204).json({ success:true, msg:'File Has Been Deleted Successfly'})
+        console.log(resume);
+        //return the resume details
+        return res.status(200).json({ 
+            success:false ,
+             data: {
+                 name: resume.name,
+                 url : `/uploads/${resume.name}`,
+                 path: resume.path,
+             } })
 
+    }
+    catch(err){
+        return res.status(500).json({ success:false , error:'Server Error : '+err })
+    }
+}
+
+
+
+
+
+
+//@des DELETE Delete resume file
+//@route DELETE api/v2/resume/:id/
+//@accesss Public
+
+exports.deleteResume = async (req,res,next)=>{
+    try{
+        //get the resume id 
+        const id = req.params.id
+
+        // get specific resume from db 
+        const resume = await Resume.findById(id)
+        console.log();
+        // check if resume is Not exist
+        if (!resume) return res.status(404).json({ success:false , error : 'File Not found'})
+        
+        //delete the file from the Server storage
+         fs.unlinkSync(resume.path)
+        
+        //delete the file's record from the mongodb 
+        await resume.deleteOne()
+
+        return res.status(200).json({ success:true, msg:'File Has Been Deleted Successfly'})
+
+        
     }
     catch(err){
         return res.status(500).json({ success:false , error:'Server Error : '+err })
