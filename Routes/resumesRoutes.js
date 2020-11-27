@@ -1,12 +1,10 @@
 const Router = require('express').Router()
-
+const ResumeController = require('../controller/resumesController')
 
 
 Router
-    .route('/resume')
-        .get((req,res,next)=>{
-                res.send('hello to Resumes')
-        })
+    .route('/resumes')
+        .get( ResumeController.getResumes)
         
 
 module.exports= Router
