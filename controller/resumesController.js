@@ -1,6 +1,6 @@
 const Resume  = require('../Models/resumeModel')
 const { validationResult } = require('express-validator')
-
+const fs = require('fs')
 
 
 
@@ -31,14 +31,90 @@ exports.getResumes  = async (req,res,next)=>{
 exports.AddResumes  = async (req,res,next)=>{        
 
     try{
-        const resumes = await Resume.find(); 
-        if(!resumes.length) return res.status(404).json({ success:false , error:'There is no resumes to view'}); 
+        const {name,path} = req.body;
+        const errors = validationResult(req)
+        const file = req.file ; 
+
+        // check if there is any error form express-validator (resumeValidator.js) middleware
+        //if(!errors.isEmpty()) return res.status(422).json({ success:false , error:errors.array() })
+        
+        //check if file exist !! 
+        if(!file) return res.status(400).json({ success:false , error:'Please Upload a PDF File' })
+        console.log(file);
+        // add new resume 
+        const resume = new Resume({
+            name : file.filename, 
+            path : file.path,
+        }); 
+        await resume.save()
         return res.status(200).json({ 
             success:true,
-            data: resumes
+            data: resume
         })
     }
+    catch(err){        
+        if(err.name == 'ValidationError') return res.status(422).json({ success:false , error:err.errors.name.message}); 
+            return res.status(500).json({ success:false , error:'Server Error : '+err })
+    }
+}
+
+
+
+
+
+//@des GET Download resume file
+//@route POST api/v2/resume/:id/download
+//@accesss Public
+
+exports.downloadFile= async (req,res,next)=>{
+        try{
+            //get the resume id 
+            const id = req.params.id
+
+            // get specific resume from db 
+            const resume = await Resume.findById(id)
+
+            // check if resume is Not exist
+            if (!resume) return res.status(404).json({ success:false , error : 'File Not found'})
+            
+            //download the PDF file
+            return res.download(resume.path)
+
+        }
+        catch(err){
+            return res.status(500).json({ success:false , error:'Server Error : '+err })
+        }
+}
+
+
+
+
+
+
+
+
+
+//@des DELETE Delete resume file
+//@route POST api/v2/resume/:id/
+//@accesss Public
+
+exports.deleteResume = async (req,res,next)=>{
+    try{
+        //get the resume id 
+        const id = req.params.id
+
+        // get specific resume from db 
+        const resume = await Resume.findById(id)
+
+        // check if resume is Not exist
+        if (!resume) return res.status(404).json({ success:false , error : 'File Not found'})
+        
+        //delete file from Server storage
+        await fs.unlink(resume.path)
+        return res.status(204).json({ success:true, msg:'File Has Been Deleted Successfly'})
+
+    }
     catch(err){
-            return res.status(500).json({ success:false , error:'Server Error'+err })
+        return res.status(500).json({ success:false , error:'Server Error : '+err })
     }
 }

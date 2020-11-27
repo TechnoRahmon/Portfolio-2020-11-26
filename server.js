@@ -3,7 +3,7 @@ const colors = require('colors')
 const dotenv = require('dotenv')
 const path = require('path')
 const morgan = require('morgan')
-
+const bodyparser = require('body-parser')
 const app = express()
 const PORT = process.env.PORT || 5000;
 /** IMPORTING FILES **/
@@ -18,6 +18,12 @@ connectDB()
 //link morgan 
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 app.use(express.json())
+
+//include body-parser
+app.use(bodyparser.urlencoded({extended:true}))
+
+/** static file **/
+app.use(express.static(path.join(__dirname,'public')))
 
 
 /************************ Api Routes ***************/
