@@ -1,5 +1,5 @@
 const { check, validationResult } = require("express-validator");
-const Project = require("../models/projectModel");
+const Project = require("../Models/projectModel");
 
 
 const isNameExist = async (projectName)=>{
