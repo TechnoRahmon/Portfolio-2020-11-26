@@ -1,11 +1,17 @@
-const Router = require('express').Router()
+const Router = require("express").Router();
+const {checkV} = require('../middleware/projectValidator')
+const projectController = require("../controller/projectsController");
 
 
+/***********
+ * Adding validor!
+ */
+Router.route("/projects")
+  .get(projectController.getProjects)
+  .post(checkV,projectController.new);
 
-Router
-    .route('/projects')
-        .get((req,res,next)=>{
-                res.send('hello to Projects')
-        })
 
-module.exports= Router
+  Router.route("/project/:project_id").
+  get(projectController.view).delete(projectController.delete);
+
+module.exports = Router;
