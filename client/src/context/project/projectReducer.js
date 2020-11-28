@@ -11,24 +11,28 @@ export default (state, action) => {
     case GET_PROJECTS:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
         projects: action.payload,
       };
     case ADD_PROJECT:
       return {
         ...state,
         projects: [action.payload, ...state.projects],
-        loading: true,
+        isLoading: true,
       };
     case GET_PROJECT_DETAILS:
       return {
         ...state,
-        project: [action.payload, ...state.project],
-        loading: true,
+        currentProject: action.payload,
+        isLoading: true,
       };
 
     case DELETE_PROJECT:
-      return { ...state, projects: [action.payload, ...state.projects] };
+      // this is helful for debbuging
+      const newProject = state.projects.filter(
+        (project) => project._id !== action.payload
+      );
+      return { ...state, projects: newProject };
 
     case ERROR_PROJECT:
       return {
