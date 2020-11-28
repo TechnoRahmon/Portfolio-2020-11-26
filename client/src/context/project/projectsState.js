@@ -16,6 +16,8 @@ const ProjectState = ({children}) => {
     projects: [], // project_list (id, title, img_url)
     currentProject: null, // signle project
     error: null,
+  
+    addSuccess:false, // under testing
   };
 
   const [state, dispacth] = useReducer(ProjectReducer, initialState);
@@ -46,14 +48,20 @@ const ProjectState = ({children}) => {
     };
     try {
       const response = await axios.post("/api/v1/projects", newProjcet, config);
+      //console.log(response.data.success)
       dispacth({
         type: ADD_PROJECT,
         payload: response.data,
+        success:response.data.success, // updated 
       });
 
       loadProject();
     } catch (error) {
-      dispacth({ type: ERROR_PROJECT, payload: error.response.err.message });
+      //console.log('err : ',error.response.data.success );
+      dispacth({ type: ERROR_PROJECT, 
+                payload: error.response.data.err ,    
+                success:error.response.data.success, //updated 
+      });
     }
   };
 
@@ -87,6 +95,15 @@ const ProjectState = ({children}) => {
       });
     }
   };
+  
+  
+  // under testing
+  // is adding success
+  // const isAddingSuccess = async ()=>{
+      
+  // }
+
+
 
   return (
     <ProjectContext.Provider
@@ -95,10 +112,11 @@ const ProjectState = ({children}) => {
         projects: state.projects,
         currentProject: state.currentProject,
         error: state.error,
-        loadProject,
-        addProject,
-        viewProject,
-        deleteProject,
+        addSuccess:state.addSuccess,
+        loadProject, // test DONE 
+        addProject,// test DONE 
+        viewProject,// test in proccess
+        deleteProject,// test in proccess
       }}
     >
       {children}

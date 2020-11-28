@@ -11,14 +11,15 @@ export const ProjectReducer = (state, action) => {
     case GET_PROJECTS:
       return {
         ...state,
-        isLoading: true,
+        isLoading: false,//updated to false
         projects: action.payload,
       };
     case ADD_PROJECT:
       return {
         ...state,
         projects: [action.payload, ...state.projects],
-        isLoading: true,
+        isLoading: false,//updated to false
+        addSuccess:action.success,//updated 
       };
     case GET_PROJECT_DETAILS:
       return {
@@ -38,6 +39,8 @@ export const ProjectReducer = (state, action) => {
       return {
         ...state,
         error: action.payload,
+        isLoading:true,//updated to true
+        addSuccess:action.success, //updated
       };
     default: {
       return state;
