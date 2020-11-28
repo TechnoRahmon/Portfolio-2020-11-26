@@ -6,7 +6,8 @@ import Experience from "./components/sidebar/Experience";
 import Education from "./components/sidebar/Education";
 import Certification from "./components/sidebar/Certification";
 import AddProjectForm from "./components/pages/AddProjectForm";
-import {Switch, Route, Router} from 'react-router-dom'
+import Resumes from "./components/pages/Resume";
+import {Switch, Route} from 'react-router-dom'
 import './css/App.css';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <Route exact path="/"  component={Home}></Route>
         <Route exact path="/projects"  component={Projects}></Route>
         <Route exact path="/newproject"  component={AddProjectForm}></Route>
-
+        <Route exact path="/resumes"  component={Resumes}></Route>
       </Switch>
       
 
