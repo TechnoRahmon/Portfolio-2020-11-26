@@ -26,7 +26,7 @@ exports.getProjects = async (req, res) => {
   } catch (error) {
     return res.status(401).json({
       success: false,
-      error: error.message
+      err: error.message
     });
   }
 };
@@ -40,19 +40,19 @@ exports.view = async (req, res) => {
       if(!project) {
         return res.status(404).json({
           success : false,
-          error: "Project is not found"
+          err: "Project is not found"
         })
       }
 
      return res.status(200).json({
         success: true,
-        project: project
+        data: project
       });
     });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: "Server error: " + error.message,
+      err: "Server error: " + error.message,
     });
   }
 };
@@ -65,7 +65,7 @@ exports.new = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(422).json({
         success: false,
-        error: errors.array(),
+        err: errors.array(),
       });
     }
     
@@ -73,7 +73,7 @@ exports.new = async (req, res) => {
     if ( nameError){
         return res.status(401).json({
             success: false,
-            error : "Name is already taken"
+            err : "Name is already taken"
         })
     }    
     
@@ -94,7 +94,7 @@ exports.new = async (req, res) => {
     if (error.name === "ValidationError") {
       return res.status(402).json({
         success: false,
-        error: error
+        err: error
       });
     }
     res.status(500).json({
@@ -129,7 +129,7 @@ exports.delete =  async function (req, res) {
         if (err) {
             res.json({
                 err: err.message,
-                message: "something worng!"
+                // message: "something worng!"
             });
             }
     }
