@@ -1,6 +1,7 @@
-import React, { userReduce } from "react";
+import React, { useReducer } from "react";
 import axios from "axios"; // dealing with rest full API
 import ProjectContext from "./projectContext";
+import {ProjectReducer} from '../project/projectReducer'
 
 import {
   GET_PROJECTS,
@@ -9,7 +10,7 @@ import {
   DELETE_PROJECT,
   ERROR_PROJECT,
 } from "../types"; // importing action type
-const ProjectState = () => {
+const ProjectState = ({children}) => {
   const initialState = {
     isLoading: true,
     projects: [], // project_list (id, title, img_url)
@@ -17,19 +18,21 @@ const ProjectState = () => {
     error: null,
   };
 
-  const [state, dispacth] = userReduce(ProjectReducer, initialState);
+  const [state, dispacth] = useReducer(ProjectReducer, initialState);
 
   // loading/ getting projects
 
   const loadProject = async () => {
     try {
       const response = await axios.get("/api/v1/projects");
+      console.log("response: ",response)
       dispacth({
         type: GET_PROJECTS,
         payload: response.data,
       });
     } catch (error) {
-      dispacth({ type: ERROR_PROJECT });
+      dispacth({ type: ERROR_PROJECT ,
+      payload: error.response.data.err});
     }
   };
 

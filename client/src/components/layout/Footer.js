@@ -23,7 +23,7 @@ const Footer = () => {
         <i className="fab fa-facebook"></i>
         <i className="fab fa-twitter"></i>
         <i className="fab fa-github"></i>
-        <i clasName="fab fa-linkedin-in"></i>
+        <i className="fab fa-linkedin-in"></i>
       </div>
       <div className="contact_info">
         <div className="email">Email email.com</div>

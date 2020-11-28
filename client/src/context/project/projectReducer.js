@@ -6,7 +6,7 @@ import {
   ERROR_PROJECT,
 } from "../types";
 
-export default (state, action) => {
+export const ProjectReducer = (state, action) => {
   switch (action.type) {
     case GET_PROJECTS:
       return {

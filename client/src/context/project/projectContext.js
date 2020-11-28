@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-const PorjectContxt = createContext();
-export default PorjectContxt;
+const ProjectContext = createContext();
+export default ProjectContext;
 
 // Creating context
