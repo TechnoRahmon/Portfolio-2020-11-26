@@ -23,7 +23,10 @@ const Projects = () => {
 
   return (
     <div>
-      <AddNewBtn />
+      <Link to="/newproject">
+        <AddNewBtn />
+      </Link>
+
       <div className="project_box">
         <div className="actual_project">
           <div className="project_img">
