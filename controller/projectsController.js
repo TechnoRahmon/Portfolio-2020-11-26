@@ -31,24 +31,55 @@ exports.getProjects = async (req, res) => {
   }
 };
 
-// @des Get one Project
+// // @des Get one Project
+
+// exports.view = async (req, res) => {
+//   try {
+//     await Project.findById(req.params.project_id, (err, project) => {
+      
+//       if(err) {
+//         console.log("error 404, prjocet not found".red);
+//         return res.status(404).json({
+//           success : false,
+//           err: "Project is not found"
+//         })
+//       }
+
+//      return res.status(200).json({
+//         success: true,
+//         data: project
+//       });
+//     }).catch(err) 
+//     {return res.status(500).json({
+//       success: false,
+//       err: "Server error: " + error.message,
+//     })}
+
+//   } catch (error) {
+//     return res.status(500).json({
+//       success: false,
+//       err: "Server error: " + error.message,
+//     });
+//   }
+// };
+
 
 exports.view = async (req, res) => {
   try {
-    await Project.findById(req.params.project_id, (err, project) => {
+   const project = await Project.findById(req.params.project_id) 
       
-      if(!project) {
+      if (!project) {
+        console.log("error 404, prjocet not found".red);
         return res.status(404).json({
-          success : false,
-          err: "Project is not found"
-        })
+          success: false,
+          err: "Project is not found",
+        });
       }
 
      return res.status(200).json({
         success: true,
         data: project
       });
-    });
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -56,6 +87,7 @@ exports.view = async (req, res) => {
     });
   }
 };
+
 
 // @des Post new Project
 

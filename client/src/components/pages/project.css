@@ -1,0 +1,10 @@
+.grid_list {
+    display: grid;
+    grid-template-columns: repeat(4, .5fr);
+}
+.img_holder {
+    width: 200px;
+}
+.project_box img {
+    width: 100%;
+}

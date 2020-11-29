@@ -9,6 +9,7 @@ import {
 export const ProjectReducer = (state, action) => {
   switch (action.type) {
     case GET_PROJECTS:
+      // console.log("action: ",action.payload)
       return {
         ...state,
         isLoading: false,//updated to false
@@ -22,6 +23,7 @@ export const ProjectReducer = (state, action) => {
         addSuccess:action.success,//updated 
       };
     case GET_PROJECT_DETAILS:
+      // console.log("Payload : ",action.payload)
       return {
         ...state,
         currentProject: action.payload,

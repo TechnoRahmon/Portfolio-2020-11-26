@@ -27,10 +27,10 @@ const ProjectState = ({children}) => {
   const loadProject = async () => {
     try {
       const response = await axios.get("/api/v1/projects");
-      console.log("response: ",response)
+      // console.log("response: ",response)
       dispacth({
         type: GET_PROJECTS,
-        payload: response.data,
+        payload: response.data.data,
       });
     } catch (error) {
       dispacth({ type: ERROR_PROJECT ,
@@ -68,14 +68,17 @@ const ProjectState = ({children}) => {
   //getDetail of project
 
   const viewProject = async (id) => {
+    // console.log("id: "+id)
     try {
-      const response = await axios.get("/api/v1/project/:" + id);
+      const response = await axios.get("/api/v1/project/"+id);
+      // console.log("response: ", response.data.data)
       dispacth({
         type: GET_PROJECT_DETAILS,
         payload: response.data.data,
       });
     } catch (error) {
-      dispacth({ type: ERROR_PROJECT, payload: error.response.err.message });
+      console.log("Error : ",error.response.data.err)
+      dispacth({ type: ERROR_PROJECT, payload: error.response.data.err });
     }
   };
 
@@ -83,7 +86,7 @@ const ProjectState = ({children}) => {
 
   const deleteProject = async (id) => {
     try {
-      const response = await axios.delete("/api/v1/project/:" + id);
+      const response = await axios.delete("/api/v1/project/"+id);
       dispacth({
         type: DELETE_PROJECT,
         payload: id, // delete object from both db and DOM tree
@@ -115,8 +118,8 @@ const ProjectState = ({children}) => {
         addSuccess:state.addSuccess,
         loadProject, // test DONE 
         addProject,// test DONE 
-        viewProject,// test in proccess
-        deleteProject,// test in proccess
+        viewProject,// test in Done
+        deleteProject,// test in Done
       }}
     >
       {children}

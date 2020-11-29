@@ -1,23 +1,42 @@
-import React,{useState , useEffect } from 'react';
+import React, { useState, useContext, useEffect } from "react";
+import projectContext from "../../context/project/projectContext";
 
 const ProjectDetails = (props) => {
+  const projectDetailsContext = useContext(projectContext);
+  const { viewProject, currentProject } = projectDetailsContext;
 
-    const [id , setId]= useState(''); 
+  const [id, setId] = useState("");
+  const [currentProj, setCurrentProj] = useState({});
 
-    useEffect(()=>{
-            
-            setId(props.match.params.id)
-            // view(id)
-    },[id])
+  // const viewProjectID = async(id)=>{
+  // await viewProject(id);
 
+  // }
 
-    return (
+  useEffect(() => {
+    // setId(props.match.params.id);
+    viewProject(props.match.params.id);
+  }, []);
+  useEffect(() => {
+    setCurrentProj(currentProject);
+  }, [currentProject]);
+
+  // console.log("current proj: ", currentProj)
+  return (
+    <div>
+      {/* current project data here*/}
+      ProjectDetails
+      {currentProj ? (
         <div>
-            {/* current project data here*/}
-            ProjectDetails
-            <h1>{id?id:null}</h1>
+          <h3>{currentProj.name}</h3>
+          <p> {currentProj.url}</p>
+          <p> {currentProj.source_code}</p>
+          <p> {currentProj.img_path}</p>
+          <p> {currentProj.description}</p>
         </div>
-    );
-}
+      ) : null}
+    </div>
+  );
+};
 
 export default ProjectDetails;
