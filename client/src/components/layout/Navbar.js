@@ -18,14 +18,19 @@ const Navbar =() => {
 
 
   return (
-    <div className='navbar bg-primary'>
-      <h1>
-        <Link to='/'>
-         {title}
-        </Link>
-      </h1>
-      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
-    </div>
+    
+      <nav>
+        <div className="nav-wrapper">
+          <ul id="nav-mobile" className=" hide-on-med-and-down navbar">
+            <li><Link to="/">HOME</Link></li>
+            <li><Link to="/projects">Projects</Link></li>
+            <li><Link to="/" className="brand-logo">Logo</Link></li>
+            <li className="center"><Link to="/resumes">Resume</Link></li>
+            <li className="right"><Link to="/about">About Me</Link></li>
+          </ul>
+        </div>
+      </nav>
+   
   );
 };
 

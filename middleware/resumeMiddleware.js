@@ -20,7 +20,7 @@ const resumeValidate = [
 
 //Uploading File 
 const Storge = multer.diskStorage({
-        destination:(req,file ,callback)=>{ console.log(__dirname); callback(null,__dirname+'/../public/uploads')},
+        destination:(req,file ,callback)=>{callback(null,__dirname+'/../public/uploads')},
         filename: (req,file ,callback)=>{ callback(null, `${Date.now()}_${file.originalname}`)}
 })
 

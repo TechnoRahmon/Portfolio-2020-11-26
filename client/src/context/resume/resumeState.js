@@ -44,7 +44,7 @@ const ResumeState = ({children})=>{
     //add new resume
     const addResume =async (newResume)=>{
         try{
-            const config={ headers:{accept :'application/json'},data:{}} 
+            const config={ headers:{'Content-Type':'multipart/form-data'}} 
             const resume = await axios.post('/api/v2/resumes',newResume,config)
                 dispatch({ type :ADD_RESUME, payload:resume.data.data ,success:resume.data.success})
         }   

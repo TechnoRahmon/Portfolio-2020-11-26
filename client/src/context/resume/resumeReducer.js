@@ -8,9 +8,10 @@ import {
 } from '../types';
 
 
+
 export const resumeReducer = (state , action)=>{
 
-        switch(action.payload){
+        switch(action.type){
 
             case GET_RESUMES:
                 return{ ...state, 
@@ -37,6 +38,7 @@ export const resumeReducer = (state , action)=>{
 
 
             case ERROR_RESUME:
+                //console.log(action.payload);
                 return{ ...state, 
                     error:action.payload, 
                     success : action.success }

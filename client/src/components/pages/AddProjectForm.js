@@ -33,11 +33,11 @@ const AddProjectForm = () => {
     const _handelsubmit = (e)=>{
     
         const newProject = {
-            name:'name20',
-            url:'www.test.com',
+            name:'name2443',
+            url:'wwwfdsfds',
             source_code:'gitub.com',
             img_path : "test.png",
-            description:"helle test 1",
+            description:'test 3 herefdsfsdfdskfsdlkgjadlkhgkadhghgjvksyhgshdkbjgyt',
         }
 
         //add new project

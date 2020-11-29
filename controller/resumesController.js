@@ -40,7 +40,7 @@ exports.AddResumes  = async (req,res,next)=>{
         
         //check if file exist !! 
         if(!file) return res.status(400).json({ success:false , error:'Please Upload a PDF File' })
-        console.log(file);
+        
         // add new resume 
         const resume = new Resume({
             name : file.filename, 

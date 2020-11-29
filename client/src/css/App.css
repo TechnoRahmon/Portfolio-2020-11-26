@@ -1,0 +1,11 @@
+
+
+/* NAV BAR */
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/**************************/

@@ -9,13 +9,16 @@ import AddProjectForm from "./components/pages/AddProjectForm";
 import ProjectDetails from "./components/pages/ProjectDetails";
 import Resumes from "./components/pages/Resume";
 import NotFound from "./components/pages/NotFound";
-
-import {Switch, Route} from 'react-router-dom'
+import NavBar from './components/layout/Navbar';
+import {Switch, Route} from 'react-router-dom';
+import About from './components/pages/About';
 import './css/App.css';
 
 function App() {
   return (
     <div className="App">
+
+      <NavBar/>
       <Switch>
         <Route exact path="/skills"  component={Skills}></Route>
         <Route exact path="/experience"  component={Experience}></Route>
@@ -26,6 +29,7 @@ function App() {
         <Route exact path="/newproject"  component={AddProjectForm}></Route>
         <Route exact path="/projectdetails/:id"  component={ProjectDetails}></Route>
         <Route exact path="/resumes"  component={Resumes}></Route>
+        <Route exact path="/about"  component={About}></Route>
         <Route  component={NotFound}></Route>
 
       </Switch>
