@@ -7,6 +7,8 @@ import Education from "./components/sidebar/Education";
 import Certification from "./components/sidebar/Certification";
 import AddProjectForm from "./components/pages/AddProjectForm";
 import Resumes from "./components/pages/Resume";
+import NotFound from "./components/pages/NotFound";
+
 import {Switch, Route} from 'react-router-dom'
 import './css/App.css';
 
@@ -22,10 +24,12 @@ function App() {
         <Route exact path="/projects"  component={Projects}></Route>
         <Route exact path="/newproject"  component={AddProjectForm}></Route>
         <Route exact path="/resumes"  component={Resumes}></Route>
-      </Switch>
-      
+        <Route  component={NotFound}></Route>
 
+      </Switch>
       <Footer />
+
+      
     </div>
   );
 }

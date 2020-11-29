@@ -28,6 +28,7 @@ const Resume = () => {
                 <a href="http://localhost:5000/api/v2/resume/5fc1715b7004ee1e24ddf05a/download">download</a>
                 <button>upload</button>
             </form>
+            
         </div>
     );
 }
