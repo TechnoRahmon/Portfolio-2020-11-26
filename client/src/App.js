@@ -6,6 +6,7 @@ import Experience from "./components/sidebar/Experience";
 import Education from "./components/sidebar/Education";
 import Certification from "./components/sidebar/Certification";
 import AddProjectForm from "./components/pages/AddProjectForm";
+import ProjectDetails from "./components/pages/ProjectDetails";
 import Resumes from "./components/pages/Resume";
 import NotFound from "./components/pages/NotFound";
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/"  component={Home}></Route>
         <Route exact path="/projects"  component={Projects}></Route>
         <Route exact path="/newproject"  component={AddProjectForm}></Route>
+        <Route exact path="/projectdetails/:id"  component={ProjectDetails}></Route>
         <Route exact path="/resumes"  component={Resumes}></Route>
         <Route  component={NotFound}></Route>
 
