@@ -44,7 +44,7 @@ const Projects = () => {
           <h3>{project.name}</h3>
         </Link>
         <button
-          className="btn-small waves-effect waves-light red"
+          className="btn-small waves-effect waves-light red deleteBtn"
           onClick={()=>{deleteProject(project._id);}}
         >
           {" "}
