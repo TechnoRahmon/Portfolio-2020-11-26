@@ -21,11 +21,12 @@ const Pdf_All_Pages = (props) => {
     return (
       <Document 
         file={pdf}
-        options={{worksrc:'/pdf.work.js'}}
+        options={{ workerSrc: "/pdf.worker.js" }}
+        onLoadError={console.error}
         onLoadSuccess={onDocumentLoadSuccess}
         >
         {Array.from(new Array(numPages), (el,index)=>(
-            <Page key={`Page_${index+1}`} numPages={index+1}></Page>   
+            <Page key={`Page_${index+1}`} pageNumber={index+1}></Page>   
         ))}
 
       </Document>
@@ -33,3 +34,12 @@ const Pdf_All_Pages = (props) => {
 }
 
 export default Pdf_All_Pages;
+
+
+//if workerSrc dosent work we use one of these solutions
+
+// Copy node_modules/pdfjs-dist/build/pdf.worker.js to public/pdf.worker.js
+// options={{workerSrc: "pdf.worker.js"}}
+
+
+// Add this props inside the Document component from react-pdf . [It is already done in the above project. ]

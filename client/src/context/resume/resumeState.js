@@ -10,6 +10,8 @@ import {
     DELETE_RESUME,
     ERROR_RESUME,
     DOWNLOAD_RESUME,
+    LOGGDING_ERROR,
+    LOADDING_ERROR,
 } from '../types';
 
 const ResumeState = ({children})=>{
@@ -17,9 +19,9 @@ const ResumeState = ({children})=>{
 
         const initState = {
             resumes : [],
-            error :null, 
+            error :null, //uploadError
             success:false,
-            
+            dataLoadingError :null, // data getting Error
         }
 
         const [state, dispatch ] = useReducer(resumeReducer,initState)
@@ -35,7 +37,7 @@ const ResumeState = ({children})=>{
                                  })
             }   
             catch(err){
-                dispatch({ type :ERROR_RESUME, payload:err.response.data.error ,success:err.response.data.succeses})
+                dispatch({ type :LOADDING_ERROR, payload:err.response.data.error ,success:err.response.data.succeses})
             }
         }
 
@@ -59,7 +61,7 @@ const ResumeState = ({children})=>{
     const downloadResume =async (id)=>{
         try{
             
-            const resume = await axios.get(`/api/v2/resume/:${id}/download`)
+            const resume = await axios.get(`/api/v2/resume/${id}/download`)
                 dispatch({ type :DOWNLOAD_RESUME ,success:resume.data.success})
         }   
         catch(err){
@@ -72,7 +74,7 @@ const ResumeState = ({children})=>{
     const deleteResume =async (id)=>{
         try{
             
-            const resume = await axios.delete(`/api/v2/resume/:${id}`)
+            const resume = await axios.delete(`/api/v2/resume/${id}`)
                 dispatch({ type :DELETE_RESUME ,payload: id ,success:resume.data.success})
         }   
         catch(err){
@@ -87,6 +89,7 @@ const ResumeState = ({children})=>{
             resumes : state.resumes,
             error : state.error,
             success: state.success,
+            dataLoadingError: state.dataLoadingError,
             getResume,addResume,deleteResume,downloadResume
         }}>
 

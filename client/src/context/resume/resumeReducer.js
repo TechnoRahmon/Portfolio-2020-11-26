@@ -5,6 +5,7 @@ import {
     DELETE_RESUME,
     ERROR_RESUME,
     DOWNLOAD_RESUME,
+    LOADDING_ERROR,
 } from '../types';
 
 
@@ -22,7 +23,7 @@ export const resumeReducer = (state , action)=>{
 
             case ADD_RESUME:
                 return{ ...state, 
-                        resumes :[...state.resumes , action.payload], 
+                        resumes :action.payload, 
                         success : action.success }
 
 
@@ -41,6 +42,12 @@ export const resumeReducer = (state , action)=>{
                 //console.log(action.payload);
                 return{ ...state, 
                     error:action.payload, 
+                    success : action.success }
+
+            case LOADDING_ERROR:
+                //console.log(action.payload);
+                return{ ...state, 
+                    dataLoadingError:action.payload, 
                     success : action.success }
 
 

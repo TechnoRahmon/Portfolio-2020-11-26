@@ -41,6 +41,14 @@ exports.AddResumes  = async (req,res,next)=>{
         //check if file exist !! 
         if(!file) return res.status(400).json({ success:false , error:'Please Upload a PDF File' })
         
+        //check the databasse elements
+        const resumes = await Resume.find()
+        if (resumes.length>0){
+            //delete the file from the Server storage
+            fs.unlinkSync(resumes[0].path)
+            await resumes[0].deleteOne() 
+        
+        }
         // add new resume 
         const resume = new Resume({
             name : file.filename, 

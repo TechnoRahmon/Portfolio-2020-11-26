@@ -15,6 +15,7 @@ export const  GET_RESUME_DETAILS = 'GET_RESUME_DETAILS'
 export const  DELETE_RESUME = 'DELETE_RESUME'
 export const  ERROR_RESUME = 'ERROR_RESUME'
 export const DOWNLOAD_RESUME = 'DOWNLOAD_RESUME'
+export const LOADDING_ERROR = 'LOADDING_ERROR'
 
 /** ERROR **/
 export const  SET_ERROR = 'SET_ERROR'

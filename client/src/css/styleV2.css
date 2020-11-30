@@ -1,0 +1,41 @@
+
+
+
+
+
+
+
+
+
+
+
+/**********  Resume PAGE ***********/
+
+
+/* FORM */
+#resume-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* PDF FILE */
+.react-pdf__Page__canvas{
+   
+}
+
+.pdf-warper{
+    position: relative;
+    overflow: hidden;
+    width:100%;
+}
+
+.resume-btn-box{
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+}
+.resume-btn-box button{
+        margin-top: 20px;
+}

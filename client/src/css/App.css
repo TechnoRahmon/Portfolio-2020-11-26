@@ -1,4 +1,8 @@
 
+.App{
+    width: 100%;
+}
+
 
 /* NAV BAR */
 
@@ -7,5 +11,23 @@
     justify-content: space-around;
 }
 
+/**************************/
 
+/* Headers */
+h2{
+    margin-bottom: 40px;
+}
+/**************************/
+
+
+/* Grid styl : container , ROW */
+
+        .container{
+            width:100%;
+
+
+        }
+        .row{
+            width:100%;
+        }
 /**************************/
