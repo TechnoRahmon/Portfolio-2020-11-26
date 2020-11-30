@@ -1,23 +1,84 @@
 /**** Home ********/
 .home {
     display: grid;
-    grid-template-columns: .2fr 1fr .2fr;
+    grid-template-columns: .3fr 1fr .3fr;
+    /* width: 70%;
+    margin: 0 auto; */
 }
 .middle_section {
     text-align: center;
 }
 
-.side_bar {
+/*********** SIDE BAR*************/
+.side_bar_menu {
     display: flex;
     flex-direction: column;
-    background-color: #eee;
     justify-content: space-around;
+    background-color: #eee;
     align-items: center;
-    z-index: -1;
+    height: 100vh;
+    width: 100%;
 }
-.side_bar .links {
-  color: black;
+ .side_link {
+    color: rgb(161, 161, 161);
+
+ }
+.side_bar .side_link:hover {
+ color: black;
+ text-align: center;
 }
+.side_bar i{
+    font-size: 80px;
+}
+.side_bar p {
+    text-align: center;
+}
+
+/********** POST *********************/
+.right-box {
+     background-color: #eee;
+}
+.right-box .post {
+text-align: center;
+padding: 10px;
+}
+.middle_section {
+    padding: 20px;
+
+}
+.img_box {
+ 
+    margin: 0 auto;
+    /* padding: 20px; */
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+ 
+  overflow: hidden;
+  position: relative;
+
+}
+
+.img_box img {
+   max-width: 100%; 
+    position: absolute;
+
+}
+.addBTN {
+     background-color: #eee;
+     padding: 10px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+
+
+
+
 
 
 
@@ -25,28 +86,35 @@
 
 
 /************* FOOTER *****************/
+  .App {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+  }
 
-.footer {
+  main {
+      flex: 1 0 auto;
+  }
+.colmns {
     display: grid;
-    grid-template-columns: .2fr 1fr .2fr;
-    padding: 30px;
-    background-color: rgba(160, 160, 160, 0.933);
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 15px;
 }
-.footer_menu {
-    list-style: none;
-}
-.footer_menu .links li {
-    color: black;
-    margin: 10px 0;
+.footer_list {
+    text-align: left;
 }
 .icons {
     display: flex;
+    align-items: center;
     justify-content: space-evenly;
+}
+.contact_info {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
     align-items: center;
 }
-.icons i {
-    font-size: 25px;
-}
-.email, .phone {
+.contact_info i {
+    margin-right: 20px;
     margin: 10px 0;
 }

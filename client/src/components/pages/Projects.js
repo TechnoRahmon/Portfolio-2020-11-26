@@ -58,9 +58,15 @@ const Projects = () => {
   return (
     <div>
       <Link to="/newproject">
-        <AddNewBtn />
+      
       </Link>
-      <div className="grid_list">{project_list.length ? project_list : "No data"}</div>
+      <div className="grid_list">{project_list.length ? project_list : "No data"}
+      <div className="addBTN">
+         <AddNewBtn />
+      </div>
+      
+      </div>
+       
     </div>
   );
 };

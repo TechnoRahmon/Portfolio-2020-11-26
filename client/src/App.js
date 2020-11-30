@@ -17,9 +17,12 @@ import './css/App.css';
 function App() {
   return (
     <div className="App">
+ 
+       <NavBar/>
 
-      <NavBar/>
-      <Switch>
+     
+      <main>
+        <Switch>
         <Route exact path="/skills"  component={Skills}></Route>
         <Route exact path="/experience"  component={Experience}></Route>
         <Route exact path="/certification"  component={Certification}></Route>
@@ -33,6 +36,8 @@ function App() {
         <Route  component={NotFound}></Route>
 
       </Switch>
+      </main>
+     
       <Footer />
 
       
