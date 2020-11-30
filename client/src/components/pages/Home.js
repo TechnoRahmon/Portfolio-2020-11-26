@@ -15,7 +15,7 @@ const Home = () => {
           at tenetur in exercitationem sequi esse nam optio illum fugit quod!
         </p>
       </div>
-      <div className="left">
+      <div className="right">
         <div className="post_1">
           <h5>POST_1</h5>
         </div>
