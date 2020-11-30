@@ -7,7 +7,7 @@ const Resume = () => {
 
     const [err, setErr] = useState('');
     const [selectedFile, setFile] = useState([]);
-    const [singleResume , setResume ] = useState({})
+    const [singleResume , setResume ] = useState(null)
     const { error , resumes , dataLoadingError, addResume , getResume , deleteResume} = useContext(ResumeContext);
 
 
@@ -86,7 +86,7 @@ const Resume = () => {
                     <a href={`http://localhost:5000/api/v2/resume/${singleResume._id}/download`} className="btn-large waves-effect waves-light ">
                         <i className="material-icons">download</i>
                     </a>
-                    <button className="btn-large waves-effect waves-light " onClick={()=>{deleteResume(singleResume._id); window.location.reload(false)}}>
+                    <button className="btn-large waves-effect waves-light " onClick={()=>{deleteResume(singleResume._id); window.location.reload(false);}}>
                         <i className="material-icons">delete</i>
                     </button> 
                 </span>
