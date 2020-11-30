@@ -3,9 +3,7 @@ import AddNewBtn from "../layout/AddNewBtn";
 import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 import ProjectContext from "../../context/project/projectContext";
-
-// temporary CSS
-import "../pages/project.css";
+import '../../css/styleV1.css'
 
 const Projects = () => {
   const [err, setErr] = useState("");
@@ -38,13 +36,13 @@ const Projects = () => {
       <div className="project_box" key={project._id}>
         <Link to={"/projectdetails/" + project._id}>
           <div className="img_holder">
-            <img src="/images/avatar.png" alt="img" />
+            <img src="/images/person1.jpg" alt="img" />
           </div>
 
           <h3>{project.name}</h3>
         </Link>
         <button
-          className="btn-small waves-effect waves-light red deleteBtn"
+          className="btn-small waves-effect waves-light grey deleteBtn"
           onClick={()=>{deleteProject(project._id);}}
         >
           {" "}

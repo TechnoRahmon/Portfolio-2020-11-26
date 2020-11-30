@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../../css/styleV1.css'
+import "../../css/styleV1.css";
 const Footer = () => {
   return (
-    <footer className="page-footer  text-grey darken-4">
+    <footer className="page-footer">
       <div className="container">
         <div className="row">
           <div className=" colmns">
@@ -37,10 +37,22 @@ const Footer = () => {
               </ul>
             </div>
             <div className="icons">
-              <i className="material-icons">facebook</i>
-              <i className="fab fa-twitter"></i>
-              <i className="fab fa-github"></i>
-              <i className="fab fa-linkedin-in"></i>
+              <Link to="#">
+                {" "}
+                <i className="material-icons">facebook</i>
+              </Link>
+              <Link to="#">
+                {" "}
+                <i className="fab fa-twitter"></i>
+              </Link>
+              <Link to="#">
+                {" "}
+                <i className="fab fa-github"></i>
+              </Link>
+              <Link to="#">
+                {" "}
+                <i className="fab fa-linkedin-in"></i>
+              </Link>
             </div>
             <div className="contact_info">
               <div className="email">
@@ -56,15 +68,10 @@ const Footer = () => {
       <div className="footer-copyright ">
         <div className="container">
           © 2020 Copyright AE
-          <a className="grey-text text-lighten-4 right" href="#!">
-            More Links
-          </a>
         </div>
       </div>
     </footer>
   );
 };
-
-
 
 export default Footer;

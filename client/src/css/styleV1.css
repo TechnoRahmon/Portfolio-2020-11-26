@@ -1,34 +1,81 @@
-/**** Home ********/
-.home {
-    display: grid;
-    grid-template-columns: .3fr 1fr .3fr;
-    /* width: 70%;
-    margin: 0 auto; */
+
+/*********************************** NAV *******************************/
+nav {
+    height: 90px;
 }
-.middle_section {
+
+.nav-wrapper ul {
+    padding: 15px;
+}
+
+
+/**** Home ********/
+
+.home {
+       background-image:linear-gradient(rgba(39, 39, 39, 0.788), rgba(39, 39, 39, 0.788)),
+       url("https://images.unsplash.com/photo-1604798676621-1367601dee73?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80");
+       background-size: cover;
+       background-position: top;
+       background-repeat: no-repeat;
+display: flex;
+justify-content: space-between;
+width: 100%;
+
+    /* background-color: rgba(238, 238, 238, 0.822); */
+    
+}
+.person_card {
+      width: 40%;
+     height: 40vh;
+     margin-top: 100px;
+     padding-top: 40px;
+    
+}
+
+.card_info {
+    padding: 30px;
     text-align: center;
+
+}
+
+.middle_section {
+    /* text-align: center;
+     width: 80%;
+    margin: 30px auto;  */
+    background-color:white;
 }
 
 /*********** SIDE BAR*************/
 .side_bar_menu {
+   
+    height: 100vh;
+    width: 20%;
+    
+}
+.side_bar {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    background-color: #eee;
-    align-items: center;
     height: 100vh;
+    justify-content: flex-start;
     width: 100%;
+    align-items: center;
+  margin-top: 60px;
+}
+
+.side_bar li {
+    margin-top: 50px;
 }
  .side_link {
     color: rgb(161, 161, 161);
-
  }
 .side_bar .side_link:hover {
  color: black;
  text-align: center;
 }
 .side_bar i{
-    font-size: 80px;
+    font-size: 40px;
+    color: #9da4cf;
+   
 }
 .side_bar p {
     text-align: center;
@@ -36,39 +83,40 @@
 
 /********** POST *********************/
 .right-box {
-     background-color: #eee;
+    width: 20%;
+    margin-top: 70px;
 }
 .right-box .post {
 text-align: center;
 padding: 10px;
+
+
 }
 .middle_section {
     padding: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
 
 }
+
+/**************img *************/
+
 .img_box {
  
-    margin: 0 auto;
-    /* padding: 20px; */
-    border-radius:50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    width: 200px;
- 
-  overflow: hidden;
-  position: relative;
-
+width: 30vh;
+height: 30vh;
 }
 
 .img_box img {
-   max-width: 100%; 
-    position: absolute;
 
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
 }
 .addBTN {
-     background-color: #eee;
+     background-color:rgba(238, 238, 238, 0.829);
      padding: 10px;
      display: flex;
      align-items: center;
@@ -76,8 +124,41 @@ padding: 10px;
 }
 
 
+/**************** PROJECTS **************/
 
 
+.grid_list {
+    display: grid;
+    grid-template-columns: repeat(4, .5fr);
+    grid-gap: 15px;
+    padding: 20px;
+}
+
+.img_holder {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.project_box img {
+    width: 100%;
+}
+
+h3 {
+    text-align: center;
+}
+
+.deleteBtn {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.project_box {
+    background-color: rgba(238, 238, 238, 0.829);
+    padding: 10px;
+}
+
+
+/*************** Skils ***********/
 
 
 
@@ -95,6 +176,10 @@ padding: 10px;
   main {
       flex: 1 0 auto;
   }
+
+ .page-footer {
+     background-color: #1d2031;
+ } 
 .colmns {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -108,6 +193,9 @@ padding: 10px;
     align-items: center;
     justify-content: space-evenly;
 }
+.icons i {
+    font-size: 35px;
+}
 .contact_info {
     display: flex;
     flex-direction: column;
@@ -117,4 +205,8 @@ padding: 10px;
 .contact_info i {
     margin-right: 20px;
     margin: 10px 0;
+}
+
+.footer-copyright .container {
+    text-align: center;
 }
