@@ -39,3 +39,54 @@
 .resume-btn-box button{
         margin-top: 20px;
 }
+
+
+
+/**********  Add New Project PAGE ***********/
+
+.addProjectForm input,.addProjectForm textarea{
+    border:1px solid #005eed !important;
+    border-radius: 10px !important;
+    margin-top: 10px;
+     padding-left: 20px !important;
+     width:90% !important;
+}
+.addProjectForm textarea{
+    padding:15px !important;
+    width: 94% !important;
+    row-gap: 30px !important;
+}
+
+/* INPUT Styling */
+
+#desLabel{
+    
+    margin-top:8px !important;
+}
+  /* label color */
+  .input-field label {
+    color: #005eed !important;
+    padding-left: 6.6% !important;
+
+    }
+
+  /* valid color */
+  .input-field input.valid ,.input-field textarea.valid {
+    border: 1px solid rgb(8, 255, 82) !important;
+    box-shadow: 0 1px 0 0 rgb(8, 255, 82) !important;
+  }
+  /* invalid color */
+  .input-field input.invalid,.input-field textarea.invalid {
+    border: 1px solid rgb(255, 23, 73) !important;
+    box-shadow: 0 1px 0 0 rgb(255, 23, 73) !important;
+  }
+  .input-field input.invalid +label ,.input-field textarea.invalid +label {
+   color:rgb(255, 23, 73) !important;
+  }
+  .input-field input.valid +label ,.input-field textarea.valid +label {
+   color:rgb(8, 255, 82) !important;
+  }
+
+  .file-path-wrapper{
+      padding-left: 1px !important;
+  }
