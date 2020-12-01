@@ -126,12 +126,16 @@ height: 30vh;
 
 /**************** PROJECTS **************/
 
-
+.project_area {
+    height: 100vh;
+}
 .grid_list {
     display: grid;
-    grid-template-columns: repeat(4, .5fr);
+    grid-template-columns: repeat(4, 350px);
     grid-gap: 15px;
     padding: 20px;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .img_holder {
@@ -143,10 +147,12 @@ height: 30vh;
     width: 100%;
 }
 
-h3 {
+h5 {
     text-align: center;
 }
-
+.addBTN {
+    height: 200px;
+}
 .deleteBtn {
     width: 100%;
     margin: 0 auto;
@@ -157,8 +163,112 @@ h3 {
     padding: 10px;
 }
 
+/**************** PROJECT DETAIL**************/
+.projectDetail_container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
 
 /*************** Skils ***********/
+
+.skills-container {
+    height: 100vh;
+}
+
+.skills-container ul {
+    list-style: none;
+}
+.skills-container h1 {
+    text-align: center;
+}
+
+.skille_list {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.skille_list li {
+
+    margin: 20px 0;
+}
+
+
+/***************** Expereince *****************/
+.experience_container {
+     height: 100vh;
+}
+
+.experience_container ul {
+    list-style: none;
+    padding: 15px;
+}
+
+.experience_container h1 {
+    text-align: center;
+}
+
+.experience_container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.experience_container li {
+
+    margin: 20px 0;
+}
+
+/**************** Certification *****************/
+.certification_container {
+ height: 100vh;
+}
+
+.certification_container ul {
+  list-style: none;
+  padding: 15px;
+}
+
+.certification_container h1 {
+    text-align: center;
+}
+
+.certification_container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.certification_container li {
+
+    margin: 20px 0;
+}
+
+
+/**************** Edcucation *****************/
+
+.education_container {
+    height: 100vh;
+}
+
+.education_container ul {
+    list-style: none;
+    padding: 15px;
+}
+
+.education_container h1 {
+    text-align: center;
+}
+
+.education_container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.education_container li {
+
+    margin: 20px 0;
+}
+
 
 
 

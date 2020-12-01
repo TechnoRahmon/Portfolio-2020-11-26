@@ -1,15 +1,17 @@
 import React from 'react';
-
+import "../../css/styleV1.css";
 const Certification = () => {
     return (
-      <div>
+      <div className="certification_container">
         <h1>Certification</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-          commodi sequi minus voluptatibus natus! Nisi, illo. Delectus
-          perferendis at nulla quisquam ipsam distinctio? Incidunt a quam animi
-          aut amet vero?
-        </p>
+        <div className="certification_list">
+          <ul>
+            <li>Codify College</li>
+            <li>Codify College</li>
+            <li>Codify College</li>
+            
+          </ul>
+        </div>
       </div>
     );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import projectContext from "../../context/project/projectContext";
+import '../../css/styleV1.css'
 
 const ProjectDetails = (props) => {
   const projectDetailsContext = useContext(projectContext);
@@ -23,7 +24,7 @@ const ProjectDetails = (props) => {
 
   // console.log("current proj: ", currentProj)
   return (
-    <div>
+    <div className="projectDetail_container">
       {/* current project data here*/}
       ProjectDetails
       {currentProj ? (

@@ -1,14 +1,16 @@
 import React from 'react';
-
+import "../../css/styleV1.css";
 const Education = () => {
     return (
-      <div>
+      <div className="education_container">
         <h1>Education</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae at
-          illum culpa tempora tenetur distinctio consequatur unde quibusdam
-          voluptate sequi.
-        </p>
+        <div className="education_list">
+          <ul>
+            <li>Codify College</li>
+            <li>Codify College</li>
+            <li>Codify College</li>
+          </ul>
+        </div>
       </div>
     );
 }

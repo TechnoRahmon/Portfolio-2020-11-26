@@ -27,11 +27,14 @@ app.use(express.static(path.join(__dirname,'public')))
 
 
 /************************ Api Routes ***************/
+
+
 //  /api/v1 for project routes 
 app.use('/api/v1', projectsRoutes)
 //  /api/v2 for resume routes 
 app.use('/api/v2', resumesRoutes)
 /***************************************/
-
+// api/vi3/ for article routes
+app.use('/api/v3/', require('./Routes/articleRoutes'))
 
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode at port: ${PORT}`.yellow.bold))

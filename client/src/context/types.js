@@ -1,5 +1,9 @@
 
-
+/**  ARTICLE ACTIONS **/ 
+export const GET_ARTICLES = 'GET_ARTICLES'
+export const ADD_ARTICLE = 'ADD_ARTICLE'
+export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const ERROR_ARTICLE = "ERROR_ARTICLE";
 
 /**  PROJECT ACTIONS **/
 export const GET_PROJECTS = 'GET_PROJECTS'

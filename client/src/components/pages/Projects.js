@@ -39,7 +39,7 @@ const Projects = () => {
             <img src="/images/person1.jpg" alt="img" />
           </div>
 
-          <h3>{project.name}</h3>
+          <h5>{project.name}</h5>
         </Link>
         <button
           className="btn-small waves-effect waves-light grey deleteBtn"
@@ -54,11 +54,12 @@ const Projects = () => {
     );
   });
   return (
-    <div>
+    <div className="project_area">
       <Link to="/newproject">
       
       </Link>
-      <div className="grid_list">{project_list.length ? project_list : "No data"}
+      <div className="grid_list">
+      {project_list.length ? project_list : "No data"}
       <div className="addBTN">
          <AddNewBtn />
       </div>
