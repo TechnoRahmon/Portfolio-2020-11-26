@@ -30,10 +30,10 @@ export const ArticleReducer = (state, action) => {
         };
     case DELETE_ARTICLE:
       // this is helful for debbuging
-      const newArticle = state.projects.filter(
+      const newArticle = state.articles.filter(
         (article) => article._id !== action.payload
       );
-      return { ...state, projects: newArticle };
+      return { ...state, projects: newArticle ,   addSuccess: action.success};
 
     case ERROR_ARTICLE:
       return {

@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           <div className=" colmns">
-            <div className="col l4 offset-l2 s12">
+            <div className="col l4 offset-l2 s12 footer_list">
               <ul className="footer_list">
                 <li>
                   <Link className="grey-text text-lighten-3" to="/skills">

@@ -3,17 +3,17 @@ import AddNewBtn from "../layout/AddNewBtn";
 import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 import ProjectContext from "../../context/project/projectContext";
-import '../../css/styleV1.css'
+import "../../css/styleV1.css";
 
 const Projects = () => {
   const [err, setErr] = useState("");
   const [proj, setProj] = useState([]);
 
   const project = useContext(ProjectContext);
-  const { loadProject, projects, error, deleteProject ,StartLoading} = project;
+  const { loadProject, projects, error, deleteProject, StartLoading } = project;
   useEffect(() => {
-    loadProject(); //get data from database 
-    StartLoading() // turn isLoading to true 
+    loadProject(); //get data from database
+    StartLoading(); // turn isLoading to true
     setProj(projects);
     if (error) {
       console.log("Error: ", error);
@@ -22,50 +22,51 @@ const Projects = () => {
     console.log("Projects: ", projects);
   }, [error, proj]);
 
+  //   useEffect(()=>{
+  // deleteProject();
+  //   })
 
-//   useEffect(()=>{
-// deleteProject();
-//   })
-
-// Delete function
-
+  // Delete function
 
   // const project0 = projects.length?projects[0]: "no data"
   const project_list = projects.map((project) => {
     return (
       <div className="project_box" key={project._id}>
-        <Link to={"/projectdetails/" + project._id}>
+        <Link className="project_name_link" to={"/projectdetails/" + project._id}>
+          <h4>{project.name}</h4>
           <div className="img_holder">
             <img src={project.img_path} alt="img" />
           </div>
-
-          <h5>{project.name}</h5>
         </Link>
-        <button
-          className="btn-small waves-effect waves-light grey deleteBtn"
-          onClick={()=>{deleteProject(project._id);}}
-        >
-          {" "}
-          <i className="material-icons">
-            delete
-          </i>
-        </button>
+        <div className="hoverBtns waves-effect waves-light ">
+          <button
+            className="btn btn-floating waves-effect waves-light red deleteBtn"
+            onClick={() => {
+              deleteProject(project._id);
+            }}
+          >
+            <i className="material-icons">delete</i>
+          </button>
+          <button className="btn btn-floating waves-effect waves-light indigo accent-4">
+            <Link to={"/projectdetails/" + project._id} className="demo">
+              <i className="far fa-eye"></i>
+            </Link>
+          </button>
+        </div>
       </div>
     );
   });
   return (
     <div className="project_area">
-      <Link to="/newproject">
-      
-      </Link>
-      <div className="grid_list">{project_list.length ? project_list : "No data"}
+      <h1>Projects</h1>
+      <p>A small selection of my projects</p>
 
+      <div className="grid_list">
+        {project_list.length ? project_list : "No data"}
+      </div>
       <div className="addBTN">
-         <AddNewBtn />
+        <AddNewBtn />
       </div>
-      
-      </div>
-       
     </div>
   );
 };

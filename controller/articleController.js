@@ -81,13 +81,14 @@ exports.delete = async function (req, res) {
     }
     await Article.deleteOne({ _id: article._id }, (err) => {
       res.json({
-        status: "sucess",
+        success: true,
         message: "article deleted",
       });
     });
   } catch (error) {
       res.json({
         err: error.message,
+        success:false
         // message: "something worng!"
       });
     

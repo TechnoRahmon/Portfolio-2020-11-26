@@ -91,11 +91,14 @@ const ArticleState = ({children}) => {
       dispatch({
         type: DELETE_ARTICLE,
         payload: id, // delete object from both db and DOM tree
+        success: response.data.success,
       });
     } catch (error) {
+      console.log("Error : ", error.response.data.err);
       dispatch({
         type: ERROR_ARTICLE,
-        payload: error.response.err.message,
+        payload: error.response.data.err,
+        success:error.response.data.success
       });
     }
   };
