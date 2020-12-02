@@ -139,7 +139,7 @@ height: 30vh;
 /**************** PROJECTS **************/
 
 .project_area {
-    height: 100vh;
+    height: auto;
 }
 .grid_list {
     display: grid;

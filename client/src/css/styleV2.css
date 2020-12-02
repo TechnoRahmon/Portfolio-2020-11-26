@@ -39,7 +39,7 @@
 .resume-btn-box button{
         margin-top: 20px;
 }
-
+/**************************************************/
 
 
 /**********  Add New Project PAGE ***********/
@@ -90,3 +90,52 @@
   .file-path-wrapper{
       padding-left: 1px !important;
   }
+  
+/**************************************************/
+
+
+
+
+/**********  About ***********/
+.About{
+  height: auto;
+  padding:0;
+  margin:40px 0;
+  width: 100%;
+}
+.sid-background{
+      background-image:linear-gradient(rgba(149, 149, 149, 0.061), rgba(39, 39, 39, 0.788)),
+       url("https://images.unsplash.com/photo-1597075095391-f15c2f9f359a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=635&q=80");
+       background-size: cover;
+       background-position: top;
+       background-repeat: no-repeat;
+       height:150vh ;
+}
+ .Box{
+  width:80%;
+  padding:40px !important;
+  
+  font-size: 120%;
+  color:#fff;
+}
+
+
+.Details p{
+ 
+  line-height: 1.8;
+  width: 100%;
+  text-align: justify;
+}
+
+.collection-item{
+  padding: 15px 20px !important;
+  color : rgb(32, 32, 32);
+  font-size: large;
+}
+
+.collection-item span{
+  margin: 15px;
+}
+.about-content{
+  margin-left: 30px !important;
+}

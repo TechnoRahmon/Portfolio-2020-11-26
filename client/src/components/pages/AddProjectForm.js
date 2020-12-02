@@ -1,58 +1,56 @@
 import React ,{useContext , useState, useEffect } from 'react';
 import ProjectContext from '../../context/project/projectContext';
 import {Link , useHistory } from 'react-router-dom';
-
+import Spinner from '../layout/Spinner';
 
 
 const AddProjectForm = () => {
 
     const history = useHistory()
-    const { addProject ,error , isLoading , addSuccess} = useContext(ProjectContext)
+    const { addProject ,error , isLoading , addSuccess, showSpinner,ClearError} = useContext(ProjectContext)
     const [err, setErr] = useState(error)
     const [newProj , setNewProj ] = useState({})
+    const [selectedImage , setImage ] = useState(null); 
+   //const [showSpiner , setSpinner] = useState(false) ;
 
     // check if there is any error in the projectState
     useEffect( ()=>{
-        if(error) {setErr(error)
+        if(error) {setErr(error);
         }
         //redirect to projects page 
-        if(addSuccess){history.push('/projects')}
+        if(addSuccess&&(!isLoading)){ history.push('/projects')}
+            
+        if(showSpinner)console.log('show spinner ' ,showSpinner);
+    },[error ,addSuccess,history,isLoading,showSpinner])
 
-    },[error ,addSuccess])
 
-
-    //assigning the error from projectState to localState
     useEffect(()=>{
-        
-        setErr(error)
-           // console.log(isLoading+' '+error);
-    },[ err])
-
-
-    //On change function
-    const _handelOnChange=(e)=>{
-        console.log(e.target.name);
-    }
-
+            setErr(error)
+    },[err])
 
 
     // submission function
     const _handelsubmit = (e)=>{
          e.preventDefault()
+        if (Object.keys(newProj).length === 4 && selectedImage )
+        {   console.log('adding');
 
-         const newProject = {
-            name:'name2442',
-            url:'wwwfdsfds',
-            source_code:'gitub.com',
-            img_path : "test.png",
-            description:'test 3 herefdsfsdfdskfsdlkgjadlkhgkadhghgjvksyhgshdkbjgyt',
+
+
+            //add new project
+                addProject(selectedImage,newProj)
+            //setSpinner(true);
+
+            //clear the local error
+            ClearError()
+            setErr('')
+
+        }else{
+            setErr('Please complete all required inputes')
+            
         }
 
-        //add new project
-        addProject(newProject)
-
-        //clear the local error
-        setErr('')
+   
         //<Link to="/projects">got to projects</Link>
     }
 
@@ -73,21 +71,21 @@ const AddProjectForm = () => {
             :null}
           
         <div className="row ">
-            <form onSubmit={_handelsubmit} className="col s12 m6 offset-m3  addProjectForm">
+            <form onSubmit={_handelsubmit} encType="mutipart/form-data" className="col s12 m6 offset-m3  addProjectForm">
 
                 {/* Project Name */}
                 <div className="input-field col s12 m6 offset-m3">
-                    <input id="projectName" type="text" name="name" className="validate" onChange={_handelOnChange}/>
+                    <input id="projectName" type="text" name="name" className="validate" onChange={(e)=>{setNewProj({...newProj, name : e.target.value  })}} required/>
                     <label htmlFor="projectName">Project Name</label>
                 </div>
                 {/* Source Code Link */}
                 <div className="input-field col s12 m6 offset-m3">
-                    <input id="gitHubLink" type="url" name="url" className="validate"  onChange={_handelOnChange}/>
+                    <input id="gitHubLink" type="url" name="url" className="validate"  onChange={(e)=>{setNewProj({...newProj, source_code : e.target.value  })}} required/>
                     <label htmlFor="gitHubLink">Source Code Link</label>
                 </div>
                 {/* Website Demo */}
                 <div className="input-field col s12 m6 offset-m3">
-                    <input id="DemoUrl" type="url" name="source_code" className="validate"  onChange={_handelOnChange}/>
+                    <input id="DemoUrl" type="url" name="source_code" className="validate"  onChange={(e)=>{setNewProj({...newProj, url : e.target.value  })}} required/>
                     <label htmlFor="DemoUrl">Website Demo Url</label>
                 </div>
 
@@ -95,7 +93,7 @@ const AddProjectForm = () => {
                 <div className="file-field input-field col s12 m6 offset-m3">
                     <div className="btn indigo accent-4 waves-effect waves-light">
                         <span>File</span>
-                        <input type="file" name="img_path"  onChange={_handelOnChange}/>
+                        <input type="file" name="img_path"  onChange={(e)=>{ setImage(e.target.files[0])}} required/>
                      </div>  
                     <div className="file-path-wrapper">
                         <input className="file-path validate" type="text" placeholder="Project Image" />
@@ -104,12 +102,14 @@ const AddProjectForm = () => {
                  
                 {/* description */}
                     <div className="input-field col s12 m6 offset-m3">
-                        <textarea id="description" name="description" className="materialize-textarea validate" data-length="120"  onChange={_handelOnChange}></textarea>
+                        <textarea id="description" name="description" className="materialize-textarea validate" data-length="120"  onChange={(e)=>{setNewProj({...newProj, description : e.target.value  })}} required></textarea>
                         <label htmlFor="description" id="desLabel">Textarea</label>
                     </div>
                 {/* Button */}
-                <div className="col s12 m6 offset-m3">
-                    <button className="btn indigo accent-4 waves-effect waves-light">send</button>
+                <div className="col s12 m6 offset-m3" style={{ display:'flex' , alignItems: 'center',  justifyContent:'center' }}>
+                    <button type="submit" className="btn indigo accent-4 waves-effect waves-light">send</button>
+                    {showSpinner?<Spinner/>:null}
+                    
                 </div>
             </form>
         </div>

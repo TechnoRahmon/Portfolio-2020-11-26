@@ -1,5 +1,5 @@
 const Router = require("express").Router();
-const {checkV} = require('../middleware/projectValidator')
+const {checkV , uploadCallBack} = require('../middleware/projectValidator')
 const projectController = require("../controller/projectsController");
 
 
@@ -8,7 +8,7 @@ const projectController = require("../controller/projectsController");
  */
 Router.route("/projects")
   .get(projectController.getProjects)
-  .post(checkV,projectController.new);
+  .post(uploadCallBack,checkV,projectController.new);
 
 
   Router.route("/project/:project_id").

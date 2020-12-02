@@ -1,4 +1,5 @@
 const { check, validationResult } = require("express-validator");
+const multer = require("multer");
 const Project = require("../Models/projectModel");
 
 
@@ -94,10 +95,17 @@ exports.view = async (req, res) => {
 exports.new = async (req, res) => {
   try {
     const errors = validationResult(req);
+    const imagefile = req.file; 
+
+    // check if image file here 
+    if (!imagefile) return res.status(400).json({success:false , err:'Please Upload image type of (gif ,png ,jpg) Blow 1GB'})
+
+    //console.log(`req.body ${req.body}`.green);
     if (!errors.isEmpty()) {
+      console.log(errors.array());
       return res.status(422).json({
         success: false,
-        err: errors.array(),
+        err: errors.array()[0].msg,
       });
     }
     
@@ -109,26 +117,26 @@ exports.new = async (req, res) => {
         })
     }    
     
-    
+   
     const project = new Project();
     project.name = req.body.name;
     project.url = req.body.url;
     project.source_code = req.body.source_code;
-    project.img_path = req.body.img_path;
+    project.img_path = `/images/${req.file.filename}`;
     project.description = req.body.description;
-
+    console.log(req.body);
     await project.save();
     return res.status(201).json({
       success: true,
       data: project,
     });
   } catch (error) {
-    if (error.name === "ValidationError") {
-      return res.status(402).json({
-        success: false,
-        err: error
-      });
-    }
+    if (error.name === "ValidationError") 
+      return res.status(402).json({  success: false, err: error });
+      
+    if (error.name=='MulterError') {console.log(error); return res.status(400).json({  success: false, err: error });}
+    console.log('req.body : ',req.body,req.file);
+    console.log(error.name=='MulterError');
     res.status(500).json({
       success: false,
       err: error.message

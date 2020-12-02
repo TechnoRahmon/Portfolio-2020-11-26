@@ -9,6 +9,7 @@ import {
   GET_PROJECT_DETAILS,
   DELETE_PROJECT,
   ERROR_PROJECT,
+  SHOW_SPINNER,
 } from "../types"; // importing action type
 const ProjectState = ({children}) => {
   const initialState = {
@@ -16,7 +17,7 @@ const ProjectState = ({children}) => {
     projects: [], // project_list (id, title, img_url)
     currentProject: null, // signle project
     error: null,
-  
+    showSpinner:false,
     addSuccess:false, // under testing
   };
 
@@ -40,14 +41,23 @@ const ProjectState = ({children}) => {
 
   // add/ post project
 
-  const addProject = async (newProjcet) => {
+  const addProject = async (imgFile , projData) => {
+    await StartshowSpinner()  // calling the spinner
+    const form_data = new FormData()
+    form_data.append('name',projData.name)
+    form_data.append('url',projData.url)
+    form_data.append('source_code',projData.source_code)
+    form_data.append('myImage',imgFile)
+    form_data.append('description',projData.description)
+  
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
     try {
-      const response = await axios.post("/api/v1/projects", newProjcet, config);
+      console.log('from state : ',state.showSpinner);
+      const response = await axios.post("/api/v1/projects", form_data, config);
       //console.log(response.data.success)
       dispacth({
         type: ADD_PROJECT,
@@ -102,12 +112,23 @@ const ProjectState = ({children}) => {
   
   // under testing
   // is adding success
-  // const isAddingSuccess = async ()=>{
-      
-  // }
 
+  //NotLoading function >> turn isLoading into true to start laoding
+   const StartLoading =  ()=>{
+        state.isLoading = true ; 
+        ClearError()
+   }
 
+   const StartshowSpinner=()=>{
+      dispacth({
+        type:SHOW_SPINNER,
+        payload:true,
+      })
+   }
 
+   const ClearError = ()=>{
+        state.error = null;
+   }
   return (
     <ProjectContext.Provider
       value={{
@@ -116,10 +137,14 @@ const ProjectState = ({children}) => {
         currentProject: state.currentProject,
         error: state.error,
         addSuccess:state.addSuccess,
+        showSpinner:state.showSpinner,
         loadProject, // test DONE 
         addProject,// test DONE 
         viewProject,// test in Done
         deleteProject,// test in Done
+        StartLoading,
+        ClearError,
+        StartshowSpinner,
       }}
     >
       {children}

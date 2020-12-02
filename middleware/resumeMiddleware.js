@@ -1,6 +1,6 @@
 const { check } = require('express-validator')
 const multer = require('multer')
-const Resume = require('../Models/resumeModel')
+
 
 
 // resume validator

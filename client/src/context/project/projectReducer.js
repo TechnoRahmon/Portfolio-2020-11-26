@@ -4,6 +4,7 @@ import {
   GET_PROJECT_DETAILS,
   DELETE_PROJECT,
   ERROR_PROJECT,
+  SHOW_SPINNER,
 } from "../types";
 
 export const ProjectReducer = (state, action) => {
@@ -12,7 +13,7 @@ export const ProjectReducer = (state, action) => {
       // console.log("action: ",action.payload)
       return {
         ...state,
-        isLoading: false,//updated to false
+        
         projects: action.payload,
       };
     case ADD_PROJECT:
@@ -21,6 +22,7 @@ export const ProjectReducer = (state, action) => {
         projects: [action.payload, ...state.projects],
         isLoading: false,//updated to false
         addSuccess:action.success,//updated 
+        showSpinner:false , 
       };
     case GET_PROJECT_DETAILS:
       // console.log("Payload : ",action.payload)
@@ -41,9 +43,19 @@ export const ProjectReducer = (state, action) => {
       return {
         ...state,
         error: action.payload,
-        isLoading:true,//updated to true
+        isLoading:false,//updated to true
         addSuccess:action.success, //updated
+        showSpinner:false ,
       };
+
+    case SHOW_SPINNER:
+      console.log('show spinner reducer');
+       return{
+          ...state,
+          showSpinner:true,
+       }
+
+
     default: {
       return state;
     }

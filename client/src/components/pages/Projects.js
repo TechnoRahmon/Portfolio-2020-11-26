@@ -10,10 +10,10 @@ const Projects = () => {
   const [proj, setProj] = useState([]);
 
   const project = useContext(ProjectContext);
-  const { loadProject, projects, error, deleteProject } = project;
+  const { loadProject, projects, error, deleteProject ,StartLoading} = project;
   useEffect(() => {
-    loadProject();
-
+    loadProject(); //get data from database 
+    StartLoading() // turn isLoading to true 
     setProj(projects);
     if (error) {
       console.log("Error: ", error);
@@ -36,7 +36,7 @@ const Projects = () => {
       <div className="project_box" key={project._id}>
         <Link to={"/projectdetails/" + project._id}>
           <div className="img_holder">
-            <img src="/images/person1.jpg" alt="img" />
+            <img src={project.img_path} alt="img" />
           </div>
 
           <h5>{project.name}</h5>
@@ -58,8 +58,8 @@ const Projects = () => {
       <Link to="/newproject">
       
       </Link>
-      <div className="grid_list">
-      {project_list.length ? project_list : "No data"}
+      <div className="grid_list">{project_list.length ? project_list : "No data"}
+
       <div className="addBTN">
          <AddNewBtn />
       </div>
