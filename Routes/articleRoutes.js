@@ -7,6 +7,7 @@ Router.route("/articles")
   .post(articleController.new);
 
 Router.route("/article/:article_id")
+  .get(articleController.view)
   .delete(articleController.delete);
 
 module.exports = Router;

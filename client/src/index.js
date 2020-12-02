@@ -5,13 +5,15 @@ import App from './App';
 import {BrowserRouter as Router} from 'react-router-dom'
 import ProjectState from '../src/context/project/projectsState'
 import ResumeProvider from '../src/context/resume/resumeState'
-
+import ArticleState from '../src/context/article/articleState'
 ReactDOM.render(
   <ProjectState >
     <ResumeProvider>
-      <Router>
+    <ArticleState>
+       <Router>
         <App />
       </Router>
+    </ArticleState>
   </ResumeProvider>
   </ProjectState>
   

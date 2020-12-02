@@ -13,34 +13,38 @@ import NavBar from './components/layout/Navbar';
 import {Switch, Route} from 'react-router-dom';
 import About from './components/pages/About';
 import './css/App.css';
+import AddArticle from './components/pages/AddArticle';
+import ArticleDetail from "./components/pages/ArticleDetail";
+
 
 function App() {
   return (
     <div className="App">
- 
-       <NavBar/>
+      <NavBar />
 
-     
       <main>
         <Switch>
-        <Route exact path="/skills"  component={Skills}></Route>
-        <Route exact path="/experience"  component={Experience}></Route>
-        <Route exact path="/certification"  component={Certification}></Route>
-        <Route exact path="/education"  component={Education}></Route>
-        <Route exact path="/"  component={Home}></Route>
-        <Route exact path="/projects"  component={Projects}></Route>
-        <Route exact path="/newproject"  component={AddProjectForm}></Route>
-        <Route exact path="/projectdetails/:id"  component={ProjectDetails}></Route>
-        <Route exact path="/resumes"  component={Resumes}></Route>
-        <Route exact path="/about"  component={About}></Route>
-        <Route  component={NotFound}></Route>
-
-      </Switch>
+          <Route exact path="/skills" component={Skills}></Route>
+          <Route exact path="/experience" component={Experience}></Route>
+          <Route exact path="/certification" component={Certification}></Route>
+          <Route exact path="/education" component={Education}></Route>
+          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/projects" component={Projects}></Route>
+          <Route exact path="/newproject" component={AddProjectForm}></Route>
+          <Route
+            exact
+            path="/projectdetails/:id"
+            component={ProjectDetails}
+          ></Route>
+          <Route exact path="/resumes" component={Resumes}></Route>
+          <Route exact path="/about" component={About}></Route>
+          <Route exact path="/addarticle" component={AddArticle}></Route>
+          <Route exact path="/articledetail/:id" component={ArticleDetail}></Route>
+          <Route component={NotFound}></Route>
+        </Switch>
       </main>
-     
-      <Footer />
 
-      
+      <Footer />
     </div>
   );
 }

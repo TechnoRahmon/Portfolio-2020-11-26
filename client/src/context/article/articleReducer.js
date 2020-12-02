@@ -2,6 +2,7 @@ import {
   GET_ARTICLES,
   ADD_ARTICLE,
   DELETE_ARTICLE,
+  GET_ARTICLE_DETAILS,
   ERROR_ARTICLE,
 } from "../types";
 
@@ -21,6 +22,12 @@ export const ArticleReducer = (state, action) => {
         isLoading: false, //updated to false
         addSuccess: action.success, //updated
       };
+      case GET_ARTICLE_DETAILS:
+        return {
+          ...state,
+          currentArticle: action.payload,
+          isLoading: true,
+        };
     case DELETE_ARTICLE:
       // this is helful for debbuging
       const newArticle = state.projects.filter(
