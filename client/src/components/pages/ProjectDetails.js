@@ -33,10 +33,11 @@ const ProjectDetails = (props) => {
             <img src={currentProj.img_path} alt="img" />
           </div>
 
-          <Link to={currentProj.url}>
+<div className="visit_link">
+  <Link to={currentProj.url}>
             <b>
               <i className="fas fa-share"></i>{" "}
-            </b>{" "}
+            </b>{""} 
           </Link>
           <Link to={currentProj.source_code}>
             {" "}
@@ -44,6 +45,8 @@ const ProjectDetails = (props) => {
               <i className="fab fa-github"></i>{" "}
             </b>
           </Link>
+</div>
+          
 
           <p>
             <b>Description: </b> {currentProj.description}

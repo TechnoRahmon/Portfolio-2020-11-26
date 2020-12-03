@@ -47,6 +47,7 @@ console.log("addSc: ",addSuccess)
             <i className="material-icons">delete</i>
           </button>
           <h1>{currentArt.title}</h1>
+          <hr/>
           <p>{currentArt.content}</p>
         </div>
       ) : null}
