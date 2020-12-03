@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 export default function ArticleDetail(props) {
   const history = useHistory();
   const articleContext = useContext(ArticleContext);
-  const { viewArticle, currentArticle, deleteArticle ,addSuccess} = articleContext;
+  const { viewArticle, currentArticle, deleteArticle ,addSuccess,isLoading} = articleContext;
 
   const [id, setId] = useState("");
   const [currentArt, setCurrentArt] = useState({});
@@ -27,11 +27,11 @@ export default function ArticleDetail(props) {
 
 
  useEffect(() => {
-    if (addSuccess) {
+    if (addSuccess&& (!isLoading)) {
       history.push("/");
     }
- }, [history, addSuccess]);
-
+ }, [history, addSuccess,isLoading]);
+ console.log('Isloading :', isLoading);
 
 console.log("addSc: ",addSuccess)
   return (

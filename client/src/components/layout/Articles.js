@@ -6,20 +6,24 @@ import { Link , useHistory} from "react-router-dom";
 export default function Acticles() {
     const [post_list , setPost_list] = useState([]); 
   const articleContext = useContext(ArticleContext);
-  const { articles } = articleContext;
+  const { articles ,StartLoading} = articleContext;
   const history= useHistory()
 //   console.log(articles);
 
 
 var arr = []; 
 useEffect(()=>{
-if ( articles.length){
+if ( articles.length >= 4 && articles.length !=0){
     
     for (var i = articles.length-1; i >articles.length-5; i--) {
     arr.push(articles[i])
       //console.log("Post_list",articles[i])
   }
-}
+}else {
+
+  for (var j= articles.length-1; j>-1;j--) {
+    arr.push(articles[j])
+}}
 
 },[articles,arr])
 
@@ -28,18 +32,19 @@ useEffect(()=>{
   if(arr.length){
      // console.log(' post : ', arr.length)
   setPost_list(arr)
-  }
+  }else{ setPost_list([])}
   
 },[articles])
 
-
+//console.log(post_list);
   return (
     <div className="posts-box-container ">
       {post_list.length
         ? post_list.map((article) => {
             return (
               <div key={`${article.title}_${article._id}`} className="post-box ">
-                <a href="#" className="blue-grey-text  text-darken-4 post" onClick={(e)=>{history.push("/articledetail/"+article._id)}} >
+                <a href="#" className="blue-grey-text  text-darken-4 post" 
+                onClick={(e)=>{  StartLoading();  history.push("/articledetail/"+article._id)}} >
                   <h5>{article.title}</h5>
                   <p className="truncate">{article.content} </p>
                 </a>

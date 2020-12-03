@@ -6,7 +6,7 @@ const Experience = () => {
       <h1>Experience</h1>
       <div className="flex_box">
         <div className="flext-right">
-          <div className="experience_detail">
+          <div className="experience_detail ">
             <h3 className="ex-h3">UI-Materialize</h3>
             <small>2018</small>
             <div className="group_span">

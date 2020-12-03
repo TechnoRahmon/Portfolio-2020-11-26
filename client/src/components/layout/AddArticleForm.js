@@ -7,7 +7,7 @@ import '../../css/styleV2.css'
 
 export default function AddArticle() {
   const history = useHistory();
-  const { addArticle, addSuccess, error } = useContext(ArticleContext);
+  const { addArticle, addSuccess, error ,isLoading} = useContext(ArticleContext);
   const [newArticle, setNewArticle] = useState("");
     const [newContent, setNewContent] = useState("");
     const [err, setErr] = useState(null);
@@ -16,11 +16,11 @@ export default function AddArticle() {
     if(error) {
       setErr(error);
     }
-    if (addSuccess) {
+    if (addSuccess && (!isLoading)) {
       history.push("/");
     }
   });
-
+console.log('Isloading :', isLoading);
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -58,13 +58,13 @@ export default function AddArticle() {
       <form onSubmit={submitHandler} autoComplete="off" className="addProjectForm">
       
       <div className="input-field col s12  ">
-        <input type="text" name="title" id="title"  onChange={onChangeHandler} value={newArticle} />
+        <input type="text" name="title" id="title"  onChange={onChangeHandler} value={newArticle} required/>
         <label htmlFor="title" className="desLabel" >Title</label>
       </div>
 
 
         <div className="input-field col s12  ">
-            <textarea name="content"className="desLabel" id="content" onChange={textChangeHandler}  value={newContent}   className="materialize-textarea validate">
+            <textarea name="content"className="desLabel" id="content" onChange={textChangeHandler}  value={newContent}   className="materialize-textarea validate" required>
             </textarea>
           <label htmlFor="content" id="desLabel">Content</label>
         </div>

@@ -20,14 +20,14 @@ const PostDetails = ({match}) => {
   
     getArticle();
     window.scrollTo(0, 0); 
-    console.log(match);
+    //console.log(match);
   },[])
 
   useEffect(()=>{
-    
+    console.log('loading from postdetails :',isLoading);
     // console.log()
     
-  },[])
+  },[isLoading])
 
 
 

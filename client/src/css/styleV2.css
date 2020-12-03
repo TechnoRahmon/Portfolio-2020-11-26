@@ -70,7 +70,7 @@
 
 /* INPUT Styling */
 
-#desLabel, .desLabel{
+#desLabel{
     
     margin-top:8px !important;
     margin-left: 10px !important;
@@ -126,7 +126,7 @@
 }
  .Box-education{
   width:100%;
-  padding:40px ;
+  padding:0px ;
   
   font-size: 120%;
   color:#fff;
@@ -134,6 +134,14 @@
 .Box-education li{
   margin-top: 20px;
 }
+.Box-education  h1{
+ 
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  margin-bottom: 20px !important;
+}
+
 .Details{
   color:#fff;
 }
@@ -144,11 +152,18 @@
   text-align: justify;
  padding:10px;
 }
+.list li{
+    margin-bottom:40px;
+    padding-left: 30px;
+}
 
 .list{
-  padding: 15px 20px !important;
+  padding: 0px 20px !important;
   color : rgb(32, 32, 32);
   font-size: large;
+  text-align: left;
+  width:85%;
+  margin:0 auto;
 }
 .list span{
   line-height: 1.7;

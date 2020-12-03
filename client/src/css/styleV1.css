@@ -241,7 +241,7 @@
     padding: 20px;
 
 }
-.actual_post h1, p {
+.actual_post h1,.actual_post p {
     margin: 0;   
     text-align: left;
     padding: 3%;
@@ -364,7 +364,7 @@ padding: 10px;
     padding: 10px; 
 }
 
-h4 {
+.project_name_link h4 {
     text-align: center;
     visibility: hidden;
 }
@@ -452,8 +452,8 @@ h4 {
 /***************** Expereince *****************/
 .experience_container {
      height: auto;
-     background-color: #eee;
-     padding: 3em;
+     
+     padding: 5px;
 }
 .experience_container h1 {
     margin: 0;
@@ -474,21 +474,27 @@ h4 {
 
 .experience_container h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .experience_container li {
 
     margin: 20px 0;
+    text-align: left;
 }
-
+.group_span {
+    float: left;
+    
+}
 .group_span span {
-    margin-right: 10px;
+    margin-right: 10px; 
+    text-align: left;
 }
 
 /**************** Certification *****************/
 .certification_container {
  height: auto;
- background-color: #eee;
+
 
 
 }
@@ -497,6 +503,8 @@ h4 {
     text-align: center;
     margin: 0;
     padding: 20px;
+    margin-bottom: 20px;
+
 }
 .certification_list {
     text-align: center;
@@ -515,9 +523,9 @@ h4 {
 
 /**************** Skills *****************/
 .skills-container {
-    background-color: #eee;
+    
     width: 100%;
-    padding: 2%;
+    padding: 5px;
 
 }
 .flex_boxes {
@@ -526,9 +534,10 @@ h4 {
     width: 90%;
     margin: 0 auto;
 }
-.skills-container h2{
+.skills-container h1{
      text-align: center;
      margin: 0;
+     margin-bottom: 20px;
      padding: 10px;
 }
 .flex_left {

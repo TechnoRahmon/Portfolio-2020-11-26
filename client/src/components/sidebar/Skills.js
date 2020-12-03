@@ -3,7 +3,7 @@ import "../../css/styleV1.css";
 const Skills = () => {
   return (
     <div className="skills-container">
-      <h2> My Skills</h2>
+      <h1> My Skills</h1>
       <div className="flex_boxes">
         <div className="flex_left">
           <div className="grid-right">

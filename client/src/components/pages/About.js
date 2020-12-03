@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Education from '../sidebar/Education';
 const About = () => {
   return (
     <div className="About ">
@@ -18,7 +18,7 @@ const About = () => {
 
                 <div className="row">
                     <div className="col  s11 ">
-                      <h2 className=" grey-text text-darken-4 ">About Me</h2>
+                      <h1 className="  blue-grey-text  text-darken-4 ">About Me</h1>
                     </div>
                 </div>
                       
@@ -38,24 +38,14 @@ const About = () => {
 
                       
                 <div className="row Education-row">
-                  <div className=" Box-education   ">
-                      <h4 className="blue-text">Education</h4>                          <div className="divider"></div>
-
-                        <ul className=" list">
-                          <li ><span className="red-text "><b>2019-2020</b></span> Cybertech - Test Automation Engineer</li>
-                          <div className="divider"></div>
-                          <li ><span className="red-text "><b>2020- ongoing</b> </span>  Codify College - Fullstack Web Development Bootcamp - 15 Weeks</li>
-                                                  <div className="divider"></div>
-
-                        </ul>
-                  </div>
+                  <Education/>
                 </div>
 
 
 
                 <div className="row ">
                   <div className="col Box  s12 ">
-                      <h4 className="blue-text">Technologies, tools and environments</h4>
+                      <h4 className=" blue-grey-text  text-darken-4">Technologies, tools and environments</h4>
                       <div className="progress">
                           <div className="determinate" style={{width: "70%"}}></div>
                       </div>

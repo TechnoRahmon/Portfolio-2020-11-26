@@ -12,7 +12,7 @@ export const ArticleReducer = (state, action) => {
       // console.log("action: ",action.payload)
       return {
         ...state,
-        isLoading: false, //updated to false
+        isLoading: true, //updated to false
         articles: action.payload,
       };
     case ADD_ARTICLE:
@@ -33,13 +33,13 @@ export const ArticleReducer = (state, action) => {
       const newArticle = state.articles.filter(
         (article) => article._id !== action.payload
       );
-      return { ...state, projects: newArticle ,   addSuccess: action.success};
+      return { ...state, projects: newArticle ,   addSuccess: action.success,isLoading: false};
 
     case ERROR_ARTICLE:
       return {
         ...state,
         error: action.payload,
-        //isLoading: true, //updated to true
+        isLoading: true, //updated to true
         addSuccess: action.success, //updated
       };
     default: {
