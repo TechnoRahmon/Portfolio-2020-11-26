@@ -22,7 +22,7 @@ const Pdf_All_Pages = (props) => {
       <Document 
         file={pdf}
         options={{ workerSrc: "/pdf.worker.js" }}
-        onLoadError={console.error}
+        onLoadError={console.log}
         onLoadSuccess={onDocumentLoadSuccess}
         >
         {Array.from(new Array(numPages), (el,index)=>(

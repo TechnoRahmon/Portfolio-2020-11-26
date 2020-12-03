@@ -63,8 +63,8 @@ const AddProjectForm = () => {
             <h3>Add New Project </h3>
             
             {error?
-            <div className="row">
-                <div className="red lighten-2 white-text col s12 m4 offset-m4">
+            <div className="row ">
+                <div className=" red-text col s12 m4 offset-m4">
                     <p > {error}  </p>
                 </div>
             </div>

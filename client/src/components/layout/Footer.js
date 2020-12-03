@@ -11,7 +11,7 @@ const Footer = () => {
               <ul className="footer_list">
                 <li>
                   <Link className="grey-text text-lighten-3" to="/skills">
-                    skills
+                   Skills
                   </Link>
                 </li>
 

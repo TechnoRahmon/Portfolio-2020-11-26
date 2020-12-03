@@ -6,6 +6,7 @@ import {
     ERROR_RESUME,
     DOWNLOAD_RESUME,
     LOADDING_ERROR,
+    SHOW_SPINNER
 } from '../types';
 
 
@@ -17,14 +18,17 @@ export const resumeReducer = (state , action)=>{
             case GET_RESUMES:
                 return{ ...state, 
                         resumes :action.payload, 
-                        success : action.success }
+                        success : action.success ,
+                        showSpinner:false ,}
                 
 
 
             case ADD_RESUME:
                 return{ ...state, 
                         resumes :action.payload, 
-                        success : action.success }
+                        success : action.success,
+                        showSpinner:false ,
+                        addSuccess:true }
 
 
             case DELETE_RESUME:
@@ -42,15 +46,23 @@ export const resumeReducer = (state , action)=>{
                 //console.log(action.payload);
                 return{ ...state, 
                     error:action.payload, 
-                    success : action.success }
+                    success : action.success,
+                    showSpinner:false ,
+                    addSuccess:false, }
 
             case LOADDING_ERROR:
                 //console.log(action.payload);
                 return{ ...state, 
                     dataLoadingError:action.payload, 
-                    success : action.success }
+                    success : action.success ,
+                    showSpinner:false ,}
 
-
+            case SHOW_SPINNER:
+                console.log('show spinner reducer');
+                    return{
+                    ...state,
+                    showSpinner:true,
+                    }
             default:{
                 return state
                 }

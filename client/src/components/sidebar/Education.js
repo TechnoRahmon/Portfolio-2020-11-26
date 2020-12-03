@@ -3,7 +3,7 @@ import "../../css/styleV1.css";
 const Education = () => {
     return (
       <div className="education_container">
-        <h1>Education</h1>
+        <h1>My Education</h1>
         <div className="education_list">
           <ul>
             <li>Codify College</li>

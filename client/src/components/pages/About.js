@@ -5,7 +5,7 @@ const About = () => {
     <div className="About ">
 
 
-      <div classNam="container">
+      <div className="container">
 
 
       <div className="row">
@@ -14,10 +14,10 @@ const About = () => {
             {/* background */}
           </div>
 
-          <div className="col s12 m6 about-content">
+          <div className="col s11 l6 m11 about-content">
 
                 <div className="row">
-                    <div className="col  s12 ">
+                    <div className="col  s11 ">
                       <h2 className=" grey-text text-darken-4 ">About Me</h2>
                     </div>
                 </div>
@@ -37,12 +37,16 @@ const About = () => {
 
 
                       
-                <div className="row ">
-                  <div className="col Box Education s12 ">
-                      <h4 className="blue-text">Education, courses and certificates</h4>
-                        <ul className="collection list">
-                          <li className="collection-item"><span className="red-text "><b>2019-2020</b></span> Cybertech - Test Automation Engineer</li>
-                          <li className="collection-item"><span className="red-text "><b>2020- ongoing</b> </span>  Codify College - Fullstack Web Development Bootcamp - 15 Weeks</li>
+                <div className="row Education-row">
+                  <div className=" Box-education   ">
+                      <h4 className="blue-text">Education</h4>                          <div className="divider"></div>
+
+                        <ul className=" list">
+                          <li ><span className="red-text "><b>2019-2020</b></span> Cybertech - Test Automation Engineer</li>
+                          <div className="divider"></div>
+                          <li ><span className="red-text "><b>2020- ongoing</b> </span>  Codify College - Fullstack Web Development Bootcamp - 15 Weeks</li>
+                                                  <div className="divider"></div>
+
                         </ul>
                   </div>
                 </div>

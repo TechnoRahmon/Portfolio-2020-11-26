@@ -1,10 +1,7 @@
 import Footer from './components/layout/Footer';
 import Home from './components/pages/Home';
 import Projects from './components/pages/Projects';
-import Skills from './components/sidebar/Skills'
-import Experience from "./components/sidebar/Experience";
-import Education from "./components/sidebar/Education";
-import Certification from "./components/sidebar/Certification";
+
 import AddProjectForm from "./components/pages/AddProjectForm";
 import ProjectDetails from "./components/pages/ProjectDetails";
 import Resumes from "./components/pages/Resume";
@@ -13,13 +10,16 @@ import NavBar from './components/layout/Navbar';
 import {Switch, Route} from 'react-router-dom';
 import About from './components/pages/About';
 import './css/App.css';
-import AddArticle from './components/pages/AddArticle';
-import ArticleDetail from "./components/pages/ArticleDetail";
-
+import AddArticle from './components/sidebar/pages/AddPost';
+import ArticleDetail from "./components/sidebar/pages/PostDetails";
+import Skills from './components/sidebar/pages/skills';
+import Certification from './components/sidebar/pages/Certification';
+import Education from './components/sidebar/pages/Education';
+import Experience from './components/sidebar/pages/Experience';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id="home">
       <NavBar />
 
       <main>

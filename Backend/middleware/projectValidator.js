@@ -33,7 +33,7 @@ const Storge = multer.diskStorage({
 
 // check the file must be allways pdf only 
 const FileFilter =(req,file,callback)=>{
-  const ext = path.extname(file.originalname)
+  const ext = path.extname(file.originalname).toLocaleLowerCase()
 if ( ext =='.gif' || ext =='.png'||ext =='.jpeg'||ext =='.jpg') {callback(null,true)} else callback(null, false)
 }
 

@@ -98,7 +98,7 @@ exports.new = async (req, res) => {
     const imagefile = req.file; 
 
     // check if image file here 
-    if (!imagefile) return res.status(400).json({success:false , err:'Please Upload image type of (gif ,png ,jpg) Blow 1GB'})
+    if (!imagefile) return res.status(400).json({success:false , err:'Please Upload Image Type Of (gif ,png ,jpg) Maximum 1M Bytes'})
 
     //console.log(`req.body ${req.body}`.green);
     if (!errors.isEmpty()) {

@@ -39,7 +39,7 @@ export const ArticleReducer = (state, action) => {
       return {
         ...state,
         error: action.payload,
-        isLoading: true, //updated to true
+        //isLoading: true, //updated to true
         addSuccess: action.success, //updated
       };
     default: {

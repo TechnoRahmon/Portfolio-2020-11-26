@@ -14,7 +14,7 @@ import {
 from '../types';
 const ArticleState = ({children}) => {
   const initialState = {
-    isLoading: true,
+    isLoading: false,
     articles: [],
     currentArticle: null,
     error: null,
@@ -107,11 +107,12 @@ const ArticleState = ({children}) => {
 
     <ArticleContext.Provider 
     value={{
- isLoading: state.isLoading,
+        isLoading: state.isLoading,
         articles: state.articles,
         currentArticle: state.currentArticle,
         error: state.error,
         addSuccess:state.addSuccess,
+        
         getArticle, // test DONE 
         addArticle,// test DONE 
         viewArticle,// test in Done

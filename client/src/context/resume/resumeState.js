@@ -12,7 +12,9 @@ import {
     DOWNLOAD_RESUME,
     LOGGDING_ERROR,
     LOADDING_ERROR,
+    SHOW_SPINNER
 } from '../types';
+import { stat } from 'fs';
 
 const ResumeState = ({children})=>{
 
@@ -21,15 +23,19 @@ const ResumeState = ({children})=>{
             resumes : [],
             error :null, //uploadError
             success:false,
-            dataLoadingError :null, // data getting Error
+            dataLoadingError :null,// data getting Error
+            showSpinner:false,
+            addSuccess:false,
+            
         }
 
         const [state, dispatch ] = useReducer(resumeReducer,initState)
 
 
         //get resume
-        const getResume =async ()=>{
+        const getResume =async ()=>{await StartshowSpinner()
             try{
+                
                 const resume = await axios.get('/api/v2/resumes')
                     dispatch({  type :GET_RESUMES,
                                 payload:resume.data.data,
@@ -45,7 +51,7 @@ const ResumeState = ({children})=>{
 
     //add new resume
     const addResume =async (newResume)=>{
-        try{
+        try{await StartshowSpinner()
             const config={ headers:{'Content-Type':'multipart/form-data'}} 
             const resume = await axios.post('/api/v2/resumes',newResume,config)
                 dispatch({ type :ADD_RESUME, payload:resume.data.data ,success:resume.data.success})
@@ -84,13 +90,22 @@ const ResumeState = ({children})=>{
     }
 
 
+    const StartshowSpinner=()=>{
+        dispatch({
+          type:SHOW_SPINNER,
+          payload:true,
+        })
+     }
+
     return(
         <ResumeContext.Provider value={{
             resumes : state.resumes,
             error : state.error,
             success: state.success,
             dataLoadingError: state.dataLoadingError,
-            getResume,addResume,deleteResume,downloadResume
+            showSpinner:state.showSpinner,
+            addSuccess:state.addSuccess,
+            getResume,addResume,deleteResume,downloadResume,StartshowSpinner
         }}>
 
             {children}
