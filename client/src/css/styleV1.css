@@ -408,6 +408,34 @@ padding: 10px;
     margin: 0 auto;
 }
 
+
+
+/* projects  search bar */
+.search-bar-box input{
+    
+    border-bottom:none !important;
+    box-shadow: none !important;
+    transition: border-bottom 0.5s ease-in !important;
+    padding-left: 5px!important;
+}
+
+.search-bar-box input:focus{
+    border-bottom:1px solid #263238 !important;
+    box-shadow: none !important;
+   
+}
+
+.search-bar-box i{
+    color:#263238 !important;
+}
+.search-bar-box label{
+    margin:0 auto !important;
+    text-align: center !important;
+}
+
+
+
+
 /**************** PROJECT DETAIL**************/
 .projectDetail_container {
     width: 100%;
