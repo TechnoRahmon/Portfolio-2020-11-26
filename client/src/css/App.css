@@ -62,6 +62,10 @@ nav{
 .activeNav{
     background-color: #2b3a41 !important;
 }
+
+.logout-link:hover{
+    background-color: #304ffe !important;
+}
 /* sidnav for mobile*/
 
 .sidenav{

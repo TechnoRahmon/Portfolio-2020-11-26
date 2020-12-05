@@ -2,11 +2,14 @@ import React ,{useContext , useState, useEffect } from 'react';
 import ProjectContext from '../../context/project/projectContext';
 import {Link , useHistory } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
+import AuthContext from '../../context/auth/authContext';
 
 
 const AddProjectForm = () => {
 
     const history = useHistory()
+    const {isTokenValid, Token } = useContext(AuthContext)
+
     const { addProject ,error , isLoading , addSuccess, showSpinner,ClearError} = useContext(ProjectContext)
     const [err, setErr] = useState(error)
     const [newProj , setNewProj ] = useState({})
@@ -17,11 +20,12 @@ const AddProjectForm = () => {
     useEffect( ()=>{
         if(error) {setErr(error);
         }
+        isTokenValid(Token)
         //redirect to projects page 
         if(addSuccess&&(!isLoading)){ history.push('/projects')}
             
         if(showSpinner)console.log('show spinner ' ,showSpinner);
-    },[error ,addSuccess,history,isLoading,showSpinner])
+    },[error ,addSuccess,history,isLoading,showSpinner,Token])
 
 
     useEffect(()=>{

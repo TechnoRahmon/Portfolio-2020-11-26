@@ -1,5 +1,7 @@
 import React from 'react';
 import Education from '../sidebar/Education';
+import Skills from '../sidebar/Skills';
+
 const About = () => {
   return (
     <div className="About ">
@@ -45,10 +47,7 @@ const About = () => {
 
                 <div className="row ">
                   <div className="col Box  s12 ">
-                      <h4 className=" blue-grey-text  text-darken-4">Technologies, tools and environments</h4>
-                      <div className="progress">
-                          <div className="determinate" style={{width: "70%"}}></div>
-                      </div>
+                      <Skills></Skills>
                   </div>
                 </div>
 

@@ -1,7 +1,7 @@
 import Footer from './components/layout/Footer';
 import Home from './components/pages/Home';
 import Projects from './components/pages/Projects';
-
+import PrivateRoute from './components/Route/PrivateRotue';
 import AddProjectForm from "./components/pages/AddProjectForm";
 import ProjectDetails from "./components/pages/ProjectDetails";
 import Resumes from "./components/pages/Resume";
@@ -16,6 +16,7 @@ import Skills from './components/sidebar/pages/skills';
 import Certification from './components/sidebar/pages/Certification';
 import Education from './components/sidebar/pages/Education';
 import Experience from './components/sidebar/pages/Experience';
+import Login from './components/auth/login';
 
 function App() {
   return (
@@ -24,13 +25,14 @@ function App() {
 
       <main>
         <Switch>
+          <Route exact path="/login" component={Login}></Route>
           <Route exact path="/skills" component={Skills}></Route>
           <Route exact path="/experience" component={Experience}></Route>
           <Route exact path="/certification" component={Certification}></Route>
           <Route exact path="/education" component={Education}></Route>
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/projects" component={Projects}></Route>
-          <Route exact path="/newproject" component={AddProjectForm}></Route>
+          <PrivateRoute exact path="/newproject" component={AddProjectForm}></PrivateRoute> 
           <Route
             exact
             path="/projectdetails/:id"
@@ -38,7 +40,7 @@ function App() {
           ></Route>
           <Route exact path="/resumes" component={Resumes}></Route>
           <Route exact path="/about" component={About}></Route>
-          <Route exact path="/addarticle" component={AddArticle}></Route>
+          <PrivateRoute exact path="/addarticle" component={AddArticle}></PrivateRoute>
           <Route exact path="/articledetail/:id" component={ArticleDetail}></Route>
           <Route component={NotFound}></Route>
         </Switch>

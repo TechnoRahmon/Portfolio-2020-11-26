@@ -34,17 +34,17 @@ const ProjectDetails = (props) => {
           </div>
 
 <div className="visit_link">
-  <Link to={currentProj.url}>
+  <a href={currentProj.url} target="_blank">
             <b>
-              <i className="fas fa-share"></i>{" "}
+              <i className="fas fa-share blue-grey-text  text-darken-4"></i>{" "}
             </b>{""} 
-          </Link>
-          <Link to={currentProj.source_code}>
+          </a>
+          <a href={currentProj.source_code} target="_blank">
             {" "}
             <b>
-              <i className="fab fa-github"></i>{" "}
+              <i className="fab fa-github blue-grey-text  text-darken-4"></i>{" "}
             </b>
-          </Link>
+          </a>
 </div>
           
 

@@ -6,17 +6,20 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import ProjectState from '../src/context/project/projectsState'
 import ResumeProvider from '../src/context/resume/resumeState'
 import ArticleState from '../src/context/article/articleState'
+import {AuthState} from '../src/context/auth/authState'
 ReactDOM.render(
-  <ProjectState >
-    <ResumeProvider>
-    <ArticleState>
-       <Router>
-        <App />
-      </Router>
-    </ArticleState>
-  </ResumeProvider>
-  </ProjectState>
-  
+
+  <AuthState>
+      <ProjectState >
+          <ResumeProvider>
+              <ArticleState>
+                  <Router>
+                       <App />  
+                  </Router>
+              </ArticleState>
+        </ResumeProvider>
+      </ProjectState>
+    </AuthState>
  ,
   document.getElementById('root')
 );

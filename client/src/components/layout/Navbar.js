@@ -1,11 +1,14 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import './../../css/styleV1.css'
 //import './../../css/mediaQ/MQHome.css'
+import AuthContext from '../../context/auth/authContext';
+import {useHistory} from 'react-router-dom';
 
 const Navbar =() => {
  
+  const {isauthenticated , currentUser, logout} = useContext(AuthContext)
+  const history = useHistory()
 
   const M = window.M;
   document.addEventListener('DOMContentLoaded', function() {
@@ -15,7 +18,7 @@ const Navbar =() => {
 
   useEffect(() => {
     //loadUser();
-
+    
 
   },[]);
 
@@ -52,9 +55,13 @@ const Navbar =() => {
           <li className="right">
             <NavLink to="/about" activeClassName="activeNav">About Me</NavLink>
           </li>
+          {isauthenticated? 
+          <li className="right">{currentUser.firstname} as Admin 
+          <i className="fas fa-sign-out-alt btn-flat btn-large white-text logout-link"  onClick={(e)=>{logout(); history.go(0)}}></i></li>
+          :<li> <NavLink to="/login" activeClassName="activeNav">Login</NavLink></li>}
         </ul>
             <a href="#" data-target="slide-out" className="sidenav-trigger "><i className="material-icons">menu</i></a>
-      <li className="  center title">Sara Marabo</li>
+      <li className="  center title">Elyas Arkin</li>
       </div>
     </nav>
   </div>

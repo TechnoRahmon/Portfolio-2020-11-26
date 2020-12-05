@@ -1,27 +1,32 @@
 import React , {useEffect, useContext, useState}from "react";
 import Sidebar from "../Sidebar";
-import Articles from "../../layout/Articles";
+import Articles from "../../layout/articles/Articles";
 import { Link , useHistory} from "react-router-dom";
 import ArticleContext from '../../../context/article/articleContext'
 import  '../../../css/mediaQ/MQHome.css';
-import ArticleDetail from '../../pages/ArticleDetail';
+import ArticleDetail from '../../layout/articles/ArticleDetail';
 import MobilSidebar from "../../sidebar/MobileSidbar";
+import AuthContext from '../../../context/auth/authContext'
+import AddArticleBtn from '../../layout/articles/Add_articleBtn';
 
 
 
 const PostDetails = ({match}) => {
+
   const { getArticle, error,isLoading } = useContext(ArticleContext);
+  const { isTokenValid , Token } = useContext(AuthContext);
+
   const history = useHistory()
   const [id , setID ] = useState(false);
 
 
 
   useEffect(()=>{
-  
+    isTokenValid(Token)
     getArticle();
     window.scrollTo(0, 0); 
     //console.log(match);
-  },[])
+  },[Token])
 
   useEffect(()=>{
     console.log('loading from postdetails :',isLoading);
@@ -77,12 +82,9 @@ const PostDetails = ({match}) => {
                 </h3>
                 <div className="divider"></div>
 
-              <Link to="/addarticle" className="blue-grey-text  text-darken-4 add-post-box">
-                <button className="btn btn-floating  waves-effect waves-light blue-grey darken-3">
-                   <i className="material-icons">add</i>
-                   </button>
-                   <span>Add post</span>
-              </Link>
+           {/**  render the Add button if the token is valid only**/}
+           {Token?<AddArticleBtn/>:null}
+               
 
               {error ?<p className="center red viewPostErro"> error </p> : null}
               

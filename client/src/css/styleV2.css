@@ -174,3 +174,25 @@
 .about-content{
   margin-left: 30px !important;
 }
+
+
+
+/* Login Page */
+
+.login-form  input{
+  border : 1px solid #263238 !important;
+  border-radius: 5px;
+  height: 40px;
+  padding-left: 30px !important;
+}
+
+
+.login-form  label{
+color:#263238 !important;
+}
+
+.login-form  input:focus{
+  border : 1px solid #263238 !important;
+  box-shadow: none !important;
+
+}

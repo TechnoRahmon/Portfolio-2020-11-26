@@ -1,20 +1,29 @@
 import React , {useEffect, useContext}from "react";
 import Sidebar from "../Sidebar";
-import Articles from "../../layout/Articles";
+import Articles from "../../layout/articles/Articles";
 import { Link } from "react-router-dom";
 import ArticleContext from '../../../context/article/articleContext'
 import  '../../../css/mediaQ/MQHome.css';
 import CertificationComponent from '../Certification';
 import MobilSidebar from "../../sidebar/MobileSidbar";
+import AddArticleBtn from '../../layout/articles/Add_articleBtn';
+import AuthContext from '../../../context/auth/authContext'
 
 
 const Certification = () => {
+
+  const { Token , isTokenValid} = useContext(AuthContext);
   const { getArticle, error } = useContext(ArticleContext);
+
+
   useEffect(()=>{
-    
+        isTokenValid(Token)
+
     getArticle();
     window.scrollTo(0, 0); 
-  },[])
+  },[Token])
+
+
   return (
   <div className="home ">
 
@@ -59,12 +68,9 @@ const Certification = () => {
                 </h3>
                 <div className="divider"></div>
 
-              <Link to="/addarticle" className="blue-grey-text  text-darken-4 add-post-box">
-                <button className="btn btn-floating  waves-effect waves-light blue-grey darken-3">
-                   <i className="material-icons">add</i>
-                   </button>
-                   <span>Add post</span>
-              </Link>
+       {/**  render the Add button if the token is valid only**/}
+            {Token?<AddArticleBtn/>:null}
+                
 
               {error ?<p className="center red viewPostErro"> error </p> : null}
               

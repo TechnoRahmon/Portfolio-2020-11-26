@@ -1,9 +1,10 @@
 import React,{ useState , useEffect , useContext} from 'react';
 import ResumeContext from '../../context/resume/resumeContext';
 import {useHistory } from 'react-router-dom';
-import PdfAllPages from '../layout/Pdf_All_Pages';
+import PdfAllPages from '../layout/resume/Pdf_All_Pages';
 import '../../css/styleV2.css';
 import Spinner from '../layout/Spinner';
+import AuthContext from '../../context/auth/authContext'
 
 
 const Resume = () => {
@@ -12,15 +13,16 @@ const Resume = () => {
     const [selectedFile, setFile] = useState([]);
     const [singleResume , setResume ] = useState(null)
     const { error , resumes , dataLoadingError, addResume , getResume , deleteResume, addSuccess,showSpinner} = useContext(ResumeContext);
+    const { Token , isTokenValid} = useContext(AuthContext);
 
 
     useEffect(()=>{
         if(error) setErr(error)
-        
+        isTokenValid(Token)
         //get resume data
         //StartshowSpinner()
         getResume()
-    },[error,])
+    },[error,Token])
 
 
     useEffect(()=>{
@@ -71,9 +73,12 @@ console.log('addSUc : ', addSuccess);
                     <a href={`http://localhost:5000/api/v2/resume/${singleResume._id}/download`} className="btn waves-effect waves-light indigo accent-4">
                         <i className="material-icons">download</i>
                     </a>
-                    <button className="btn waves-effect waves-light indigo accent-4 " onClick={()=>{deleteResume(singleResume._id); window.location.reload(false);}}>
+                    {Token?
+                        <button className="btn waves-effect waves-light indigo accent-4 " onClick={()=>{deleteResume(singleResume._id); window.location.reload(false);}}>
                         <i className="material-icons">delete</i>
                     </button> 
+                    :null}
+                
                 </span>
                 ):null}
             </div>
@@ -81,7 +86,7 @@ console.log('addSUc : ', addSuccess);
             <div className="row ">
  
                 {/* upload form  */}
-                <div className="col s12 m8 offset-m2 l3  card form-box"> 
+                {Token?<div className="col s12 m8 offset-m2 l3  card form-box"> 
 
                    
 
@@ -103,7 +108,7 @@ console.log('addSUc : ', addSuccess);
                         </div> 
 
                     {/* button */}
-                        <div className="col s12 m6 offset-m3" style={{ display:'flex' , alignItems: 'center',  justifyContent:'center' }}>
+                        <div className="col s12 m6 offset-m3 center" style={{ display:'flex' , alignItems: 'center',  justifyContent:'center' }}>
                             <button type="submit" className="btn indigo accent-4 waves-effect waves-light">send</button>
                       </div>
 
@@ -111,7 +116,7 @@ console.log('addSUc : ', addSuccess);
                     </form>
 
 
-                </div>
+                </div>:null}
 
 
 
@@ -123,12 +128,12 @@ console.log('addSUc : ', addSuccess);
 
                 // check if the file empty
        singleResume?(
-            <div className="col card s12 m12 l8 right pdf-warper" key={singleResume._id}>
+            <div className="col card s12 m11 l7 offset-l2 center pdf-warper" key={singleResume._id}>
 
                 <PdfAllPages pdf={`/uploads/${singleResume.name}`} />
             </div>
 
-        ):(<div className="col s12 m7 offset-m1 card  white blue-grey-text  text-darken-4 " style={{padding:"25px" , height:"12vh", display:'flex', justifyContent:'center' , alignItems:'center'}}>
+        ):(<div className="col s12 m11 l6  offset-l3  card center   white blue-grey-text  text-darken-4 " style={{padding:"25px" , height:"12vh", display:'flex', justifyContent:'center' , alignItems:'center'}}>
             <p >{dataLoadingError|| 'THERE IS NO DATA'}</p>
             </div>)
 

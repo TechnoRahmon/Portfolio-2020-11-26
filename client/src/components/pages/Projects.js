@@ -1,13 +1,15 @@
 // import React from "react";
-import AddNewBtn from "../layout/AddNewBtn";
+import AddNewBtn from "../layout/projects/AddNewProjectBtn";
 import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 import ProjectContext from "../../context/project/projectContext";
 import "../../css/styleV1.css";
+import AuthContext from '../../context/auth/authContext'
 
 const Projects = () => {
   const [err, setErr] = useState("");
   const [proj, setProj] = useState([]);
+  const {Token, isTokenValid} = useContext(AuthContext);
 
   const project = useContext(ProjectContext);
   const { loadProject, projects, error, deleteProject, StartLoading } = project;
@@ -39,19 +41,28 @@ const Projects = () => {
           </div>
         </Link>
         <div className="hoverBtns waves-effect waves-light ">
+          
+          {/* Check the Atuh for display the delete Button */}
+        {Token? 
+         
           <button
-            className="btn btn-floating waves-effect waves-light red deleteBtn"
-            onClick={() => {
-              deleteProject(project._id);
-            }}
-          >
-            <i className="material-icons">delete</i>
+              className="btn btn-floating waves-effect waves-light red deleteBtn"
+              onClick={() => {
+                deleteProject(project._id);
+              }}
+            >
+             <i className="material-icons">delete</i>
           </button>
+
+         :null}
+
+          {/* View Button */}
           <button className="btn btn-floating waves-effect waves-light indigo accent-4">
             <Link to={"/projectdetails/" + project._id} className="demo">
               <i className="far fa-eye"></i>
             </Link>
           </button>
+          
         </div>
       </div>
     );
@@ -64,9 +75,12 @@ const Projects = () => {
       <div className="grid_list">
         {project_list.length ? project_list : "No data"}
       </div>
-      <div className="addBTN">
-        <AddNewBtn />
-      </div>
+      {Token?
+          <div className="addBTN">
+            <AddNewBtn />
+          </div>
+      :null}
+  
     </div>
   );
 };

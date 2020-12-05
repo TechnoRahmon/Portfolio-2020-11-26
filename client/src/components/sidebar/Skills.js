@@ -12,7 +12,7 @@ const Skills = () => {
               <img
                 src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_960_720.png"
                 alt="html"
-                srcset=""
+                srcSet=""
               />
               <img
                 src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747_1280.png"
@@ -48,8 +48,8 @@ const Skills = () => {
             <h5>PYTHON</h5>
             <div className="icon_holder">
               <img
-                src="https://assets.stickpng.com/images/5848152fcef1014c0b5e4967.png"
-                alt="puton"
+                src="images/python.png"
+                alt="python"
               />
             </div>
             <div className="progress">

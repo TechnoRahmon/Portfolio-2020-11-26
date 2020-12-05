@@ -26,3 +26,10 @@ export const LOADDING_ERROR = 'LOADDING_ERROR'
 /** ERROR **/
 export const  SET_ERROR = 'SET_ERROR'
 export const  CLEAR_ERROR = 'CLEAR_ERROR'
+
+
+/**  Auth  **/
+export const USER_LOGIN  = 'USER_LOGIN'
+export const USER_LOGOUT = 'USER_LOGOUT'
+export const VALID_TOKEN = 'VALID_TOKEN'
+export const USER_ERROR = 'USER_ERROR'
