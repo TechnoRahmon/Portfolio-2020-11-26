@@ -48,12 +48,7 @@ const Projects = () => {
             setSearchResualt(arrtest)
      } 
   
-     
-
-  const searchForIt =async ()=>{
-
-      
-  }
+    
   }
   
   console.log('Resualt : ',searchResualt.length);
