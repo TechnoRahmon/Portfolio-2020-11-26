@@ -84,6 +84,10 @@ const Navbar =() => {
           <li className="center sidenav-close">
             <Link to="/about">About Me</Link>
           </li>
+          {isauthenticated? 
+          <li className="right" style={{display:'flex', flexDirection:'column'}}>{currentUser.firstname} as Admin 
+          <i className="fas fa-sign-out-alt btn-flat btn-large indigo-text text-accent-4 logout-link"  onClick={(e)=>{logout(); history.go(0)}}></i></li>
+          :<li> <NavLink to="/login" activeClassName="activeNav">Login</NavLink></li>}
   </ul>
         
 
