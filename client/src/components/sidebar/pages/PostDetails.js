@@ -10,15 +10,14 @@ import AuthContext from '../../../context/auth/authContext'
 import AddArticleBtn from '../../layout/articles/Add_articleBtn';
 
 
-
 const PostDetails = ({match}) => {
 
   const { getArticle, error,isLoading } = useContext(ArticleContext);
   const { isTokenValid , Token } = useContext(AuthContext);
-
   const history = useHistory()
-  const [id , setID ] = useState(false);
 
+  const [id , setID ] = useState('');
+  const [articleChild , setChild ] = useState(null);
 
 
   useEffect(()=>{
@@ -26,13 +25,22 @@ const PostDetails = ({match}) => {
     getArticle();
     window.scrollTo(0, 0); 
     //console.log(match);
-  },[Token])
+    setID(match.params.id)
+  },[Token,match.params.id])
 
   useEffect(()=>{
-    console.log('loading from postdetails :',isLoading);
+    //console.log('loading from postdetails :',isLoading);
     // console.log()
-    
-  },[isLoading])
+    //history.go(0)
+
+    setChild(<ArticleDetail match={match}/>)
+    // console.log(match);
+    // console.log(id===match.params.id, id);
+    // if((id) && id !==match.params.id){
+    //     history.go(0)
+    //     console.log('log : ',false);
+    // }
+  },[match.params.id , id,history])
 
 
 
@@ -42,7 +50,11 @@ const PostDetails = ({match}) => {
   <div className="home ">
 
     <div className="container home-container">
-        
+     
+
+
+
+    
         <div className="row home-row">
 
 
@@ -59,7 +71,7 @@ const PostDetails = ({match}) => {
                 <div className="middle_section blue-grey-text  text-darken-4">
 
                 
-                    <ArticleDetail match={match}/>
+               { articleChild}
 
 
                 </div>
@@ -93,6 +105,7 @@ const PostDetails = ({match}) => {
             </div>
 
         </div>
+         
     </div>
   </div>
   );

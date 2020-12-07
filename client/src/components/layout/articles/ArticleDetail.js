@@ -11,9 +11,8 @@ export default function ArticleDetail(props) {
   const { viewArticle, currentArticle, deleteArticle ,addSuccess,isLoading} = articleContext;
   const {Token , isTokenValid} = useContext(AuthContext) ;
 
-  const [id, setId] = useState("");
-  const [currentArt, setCurrentArt] = useState({});
-
+  const [id, setID] = useState("");
+  
  
   useEffect(() => {
    
@@ -21,31 +20,33 @@ export default function ArticleDetail(props) {
  viewArticle(props.match.params.id); 
 
 
-    console.log(id)
-  }, [Token]);
+    //console.log(id)
+  }, [Token,props.match.params.id]);
 
-  useEffect(() => {
-    setCurrentArt(currentArticle); 
-  }, [currentArticle]);
+
 
 
  useEffect(() => {
     if (addSuccess&& (!isLoading)) {
       history.push("/");
     }
- }, [history, addSuccess,isLoading]);
- console.log('Isloading :', isLoading);
+    setID(props.match.params.id)
+ }, [history, addSuccess,isLoading,id]);
 
-console.log("addSc: ",addSuccess)
+
+
+
+
+
   return (
     <div className="atricle_details">
-      {currentArt ? (
+      {currentArticle ? (
         <div className="actual_post">
           {Token? 
             <button
                 className="btn btn-floating waves-effect waves-light red deleteBtn"
                 onClick={() => {
-                  deleteArticle(currentArt._id);
+                  deleteArticle(currentArticle._id);
                 }}
               >
                 <i className="material-icons">delete</i>
@@ -53,9 +54,9 @@ console.log("addSc: ",addSuccess)
           :null}
    
 
-          <h1>{currentArt.title}</h1>
+          <h1>{currentArticle.title}</h1>
           <hr/>
-          <p>{currentArt.content}</p>
+          <p>{currentArticle.content}</p>
         </div>
       ) : null}
     </div>

@@ -10,7 +10,7 @@ const SearchProjects = ({SearchWord , goSearch}) => {
                     <input type="text" name="Search-bar" id="Search-bar" 
                         value={SearchWord} onChange={goSearch}/>
                     
-                    <label htmlFor="Search-bar" className="blue-grey-text   text-darken-4">Search Project</label>
+                    <label htmlFor="Search-bar" className="blue-grey-text   text-darken-4">Search Project Name</label>
                 </div>
             </div>
             

@@ -39,7 +39,7 @@ const ProjectDetails = (props) => {
               <i className="fas fa-share blue-grey-text  text-darken-4"></i>{" "}
             </b>{""} 
           </a>
-          <a href={currentProj.source_code} target="_blank">
+          <a href={currentProj.source_code} target="_blank" >
             {" "}
             <b>
               <i className="fab fa-github blue-grey-text  text-darken-4"></i>{" "}

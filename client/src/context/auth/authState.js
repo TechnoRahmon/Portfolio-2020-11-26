@@ -39,8 +39,8 @@ export const AuthState = ({children})=>{
     async function isTokenValid(token){
             try{
                 const config= { headers :{ 'x-auth-token':token}}
-                console.log('Token from AuthState :',state.Token);
-                console.log('config from  AuthState',config);
+                // console.log('Token from AuthState :',state.Token);
+                // console.log('config from  AuthState',config);
                 const TokenResp = await axios.post('/api/v4/valid',null,config)
                 dispatch({ type:VALID_TOKEN , payload: TokenResp.data.user ,auth:true  })
             }

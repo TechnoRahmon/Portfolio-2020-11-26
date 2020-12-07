@@ -9,7 +9,8 @@ import {
     ADD_ARTICLE,
     DELETE_ARTICLE,
     GET_ARTICLE_DETAILS,
-    ERROR_ARTICLE
+    ERROR_ARTICLE,
+    SHOW_SPINNER
 }
 from '../types';
 const ArticleState = ({children}) => {
@@ -18,6 +19,7 @@ const ArticleState = ({children}) => {
     articles: [],
     currentArticle: null,
     error: null,
+    showSpinner:false,
     addSuccess: false, // under testing
   };
 
@@ -69,6 +71,7 @@ const ArticleState = ({children}) => {
   //getDetail of detail
 
   const viewArticle = async (id) => {
+    StartshowSpinner()
     // console.log("id: "+id)
     try {
       const response = await axios.get("/api/v3/article/"+id);
@@ -114,6 +117,13 @@ const ArticleState = ({children}) => {
   state.error = null;
 }
 
+const StartshowSpinner=()=>{
+  dispatch({
+    type:SHOW_SPINNER,
+    payload:true,
+  })
+}
+
   return (
 
     <ArticleContext.Provider 
@@ -123,6 +133,7 @@ const ArticleState = ({children}) => {
         currentArticle: state.currentArticle,
         error: state.error,
         addSuccess:state.addSuccess,
+        showSpinner:state.showSpinner,
         StartLoading,
         getArticle, // test DONE 
         addArticle,// test DONE 

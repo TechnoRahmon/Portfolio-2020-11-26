@@ -4,6 +4,7 @@ import {
   DELETE_ARTICLE,
   GET_ARTICLE_DETAILS,
   ERROR_ARTICLE,
+  SHOW_SPINNER
 } from "../types";
 
 export const ArticleReducer = (state, action) => {
@@ -13,7 +14,7 @@ export const ArticleReducer = (state, action) => {
       return {
         ...state,
         isLoading: true, //updated to false
-        articles: action.payload,
+        articles: action.payload, showSpinner:false ,
       };
     case ADD_ARTICLE:
       return {
@@ -21,19 +22,28 @@ export const ArticleReducer = (state, action) => {
         articles: [action.payload, ...state.articles],
         isLoading: false, //updated to false
         addSuccess: action.success, //updated
+         showSpinner:false ,
       };
+
+
       case GET_ARTICLE_DETAILS:
         return {
           ...state,
           currentArticle: action.payload,
           isLoading: true,
+          showSpinner:false ,
         };
+
+
     case DELETE_ARTICLE:
       // this is helful for debbuging
       const newArticle = state.articles.filter(
         (article) => article._id !== action.payload
       );
-      return { ...state, projects: newArticle ,   addSuccess: action.success,isLoading: false};
+      return { ...state, projects: newArticle ,
+           addSuccess: action.success,
+           isLoading: false,
+           showSpinner:false ,};
 
     case ERROR_ARTICLE:
       return {
@@ -41,7 +51,17 @@ export const ArticleReducer = (state, action) => {
         error: action.payload,
         isLoading: true, //updated to true
         addSuccess: action.success, //updated
+        showSpinner:false ,
       };
+
+    case SHOW_SPINNER:
+        console.log('show spinner reducer');
+            return{
+            ...state,
+            showSpinner:true,
+            }
+
+
     default: {
       return state;
     }

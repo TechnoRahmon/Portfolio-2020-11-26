@@ -7,6 +7,7 @@ import ProjectState from '../src/context/project/projectsState'
 import ResumeProvider from '../src/context/resume/resumeState'
 import ArticleState from '../src/context/article/articleState'
 import {AuthState} from '../src/context/auth/authState'
+//import name from 'history';
 ReactDOM.render(
 
   <AuthState>

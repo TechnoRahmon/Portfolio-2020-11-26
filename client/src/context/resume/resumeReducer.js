@@ -58,11 +58,11 @@ export const resumeReducer = (state , action)=>{
                     showSpinner:false ,}
 
             case SHOW_SPINNER:
-                console.log('show spinner reducer');
                     return{
                     ...state,
                     showSpinner:true,
                     }
+                    
             default:{
                 return state
                 }

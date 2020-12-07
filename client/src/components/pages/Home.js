@@ -19,7 +19,7 @@ const Home = () => {
 
   },[Token])
 
-console.log('isauthenticated :', isauthenticated , 'isLoading :',isLoading);
+// console.log('isauthenticated :', isauthenticated , 'isLoading :',isLoading);
   return (
   <div className="home ">
 

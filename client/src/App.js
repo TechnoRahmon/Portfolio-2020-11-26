@@ -23,7 +23,7 @@ function App() {
     <div className="App" id="home">
       <NavBar />
 
-      <main>
+      <main >
         <Switch>
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/skills" component={Skills}></Route>
@@ -33,11 +33,7 @@ function App() {
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/projects" component={Projects}></Route>
           <PrivateRoute exact path="/newproject" component={AddProjectForm}></PrivateRoute> 
-          <Route
-            exact
-            path="/projectdetails/:id"
-            component={ProjectDetails}
-          ></Route>
+          <Route exact path="/projectdetails/:id" component={ProjectDetails}></Route>
           <Route exact path="/resumes" component={Resumes}></Route>
           <Route exact path="/about" component={About}></Route>
           <PrivateRoute exact path="/addarticle" component={AddArticle}></PrivateRoute>
